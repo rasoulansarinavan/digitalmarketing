@@ -44,6 +44,9 @@
     <!-- Plugins Customization RTL -->
     <link rel="stylesheet" href="/backend/css/plugins-rtl.css">
 
+    <link rel="stylesheet" href="/persian-fonts/fontiran.css">
+    <link rel="stylesheet" href="/persian-fonts/style.css">
+
     @livewireStyles
 </head>
 <body>

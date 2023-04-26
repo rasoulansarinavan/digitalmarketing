@@ -21,7 +21,7 @@
 														<i class="icon-calendar1"></i>
 													</span>
                                 </div>
-                                <div class="field-placeholder">Select Date</div>
+                                <div class="field-placeholder">اسنتخاب</div>
                             </div>
                             <!-- Field wrapper end -->
                             <a href="/backend/#" class="btn"><i class="icon-download1"></i> <span>Reports</span></a>
