@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Client\Profile\Dashboard\index;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::group(['prefix' => 'profile',/* 'middleware' => 'auth:web'*/], function () {
+    Route::name('profile.')->group(function () {
+        Route::get('/dashboard', index::class)->name('dashboard');
+    });
+
 });
