@@ -13,18 +13,7 @@
 
                         <!-- Top Actions - DateRange and Buttons -->
                         <div class="d-flex justify-content-end">
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper m-0">
-                                <div class="input-group">
-                                    <input type="text" class="form-control custom-daterange2">
-                                    <span class="input-group-text">
-														<i class="icon-calendar1"></i>
-													</span>
-                                </div>
-                                <div class="field-placeholder">اسنتخاب</div>
-                            </div>
-                            <!-- Field wrapper end -->
-                            <a href="/backend/#" class="btn"><i class="icon-download1"></i> <span>Reports</span></a>
+
                         </div>
 
                         <!-- Welcome Title -->
