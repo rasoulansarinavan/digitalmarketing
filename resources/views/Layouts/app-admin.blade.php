@@ -43,6 +43,10 @@
 
     <!-- Plugins Customization RTL -->
     <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">
+    <link rel="stylesheet" href="/persian-fonts/fontiran.css">
+    <link rel="stylesheet" href="/persian-fonts/style.css">
+
+    @livewireStyles
 
 </head>
 <body>
@@ -133,6 +137,6 @@
 
 <!-- Main Js Required -->
 <script src="/backend/dark/js/main.js"></script>
-
+@livewireScripts
 </body>
 </html>
