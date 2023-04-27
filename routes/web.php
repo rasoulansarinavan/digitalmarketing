@@ -25,3 +25,12 @@ Route::group(['prefix' => 'profile',/* 'middleware' => 'auth:web'*/], function (
     });
 
 });
+
+
+/*********** ADMIN PANEL *************/
+
+
+Route::group(['prefix' => 'admin','name'=>'admin.',/* 'middleware' =>'auth:admin'*/], function () {
+    Route::get('/dashboard', App\Http\Livewire\Admin\Dashboard\Index::class)->name('dashboard');
+
+});
