@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/backend/dark/img/fav.png">
 
     <!-- Title -->
-    <title>Uni Pro Admin Template - Admin Dashboard</title>
+    <title>Digital marketing</title>
 
 
     <!-- *************

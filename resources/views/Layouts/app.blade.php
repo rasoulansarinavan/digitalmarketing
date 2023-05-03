@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/backend/img/fav.png">
 
     <!-- Title -->
-    <title>Uni Pro Admin Template - Admin Dashboard</title>
+    <title>Digital marketing</title>
 
 
     <!-- *************
@@ -26,10 +26,6 @@
     <!-- Main css -->
     <link rel="stylesheet" href="/backend/css/main-rtl.css">
 
-
-    <!-- *************
-        ************ Vendor Css Files *************
-    ************ -->
 
     <!-- Mega Menu -->
     <link rel="stylesheet" href="/backend/vendor/megamenu/css/megamenu.css">
@@ -51,54 +47,31 @@
 </head>
 <body>
 
-<!-- Loading wrapper start -->
 <div id="loading-wrapper">
     <div class="spinner-border"></div>
     Loading...
 </div>
-<!-- Loading wrapper end -->
 
-<!-- Page wrapper start -->
+
 <div class="page-wrapper">
 
-    <!-- Sidebar wrapper start -->
     <livewire:client.profile.menu />
-    <!-- Sidebar wrapper end -->
 
-    <!-- *************
-        ************ Main container start *************
-    ************* -->
     <div class="main-container">
-
-        <!-- Page header starts -->
-
-        <!-- Page header ends -->
         <livewire:client.profile.header />
-        <!-- Content wrapper scroll start -->
-
         {{$slot}}
-        <!-- Content wrapper scroll end -->
 
     </div>
-    <!-- *************
-        ************ Main container end *************
-    ************* -->
 
 </div>
-<!-- Page wrapper end -->
 
-<!-- *************
-    ************ Required JavaScript Files *************
-************* -->
+
+
 <!-- Required jQuery first, then Bootstrap Bundle JS -->
 <script src="/backend/js/jquery.min.js"></script>
 <script src="/backend/js/bootstrap.bundle.min.js"></script>
 <script src="/backend/js/modernizr.js"></script>
 <script src="/backend/js/moment.js"></script>
-
-<!-- *************
-    ************ Vendor Js Files *************
-************* -->
 
 <!-- Megamenu JS -->
 <script src="/backend/vendor/megamenu/js/megamenu.js"></script>

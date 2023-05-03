@@ -15,9 +15,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
 });
 
+//Route::get('/', Home::class)->name('client.home');
+
+Route::group(['prefix' => 'auth', 'middleware' => 'guest'], function () {
+
+    Route::name('auth.client')->group(function () {
+        Route::get('/', \App\Http\Livewire\Client\Auth\Index::class);
+     /*   Route::get('/gmail', [Authentication::class, 'redirectToProvider'])->name('.gmail');
+        Route::get('/gmail/callback', [Authentication::class, 'handleProviderCallback'])->name('.gmail.callback');*/
+    });
+
+});
 
 Route::group(['prefix' => 'profile',/* 'middleware' => 'auth:web'*/], function () {
     Route::name('profile.')->group(function () {
