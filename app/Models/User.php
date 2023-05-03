@@ -21,7 +21,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'picture'
     ];
 
     /**
@@ -47,6 +47,7 @@ class User extends Authenticatable
     {
         $check = User::query()->where('email', $user['email'])->first();
         if (!$check) {
+
             $newUser = User::query()->create([
                 'email' => $user['email'],
                 'picture' => $user['picture'],
