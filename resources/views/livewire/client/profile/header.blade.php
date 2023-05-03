@@ -519,7 +519,7 @@
                         <div class="header-profile-actions">
                             <a href="/backend/user-profile.html"><i class="icon-user1"></i>Profile</a>
                             <a href="/backend/account-settings.html"><i class="icon-settings1"></i>Settings</a>
-                            <a href="/backend/forgot-password.html"><i class="icon-log-out1"></i>Logout</a>
+                            <a href="{{route('auth.client.logout')}}"><i class="icon-log-out1"></i>Logout</a>
                         </div>
                     </div>
                 </li>

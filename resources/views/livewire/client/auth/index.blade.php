@@ -12,9 +12,12 @@
                         <span>Simple.</span>
                     </div>
                     <div class="about-desc">
-                        UniPro a data dashboard is an information management tool that visually tracks, analyzes and displays key performance indicators (KPI), metrics and key data points to monitor the health of a business, department or specific process.
+                        UniPro a data dashboard is an information management tool that visually tracks, analyzes and
+                        displays key performance indicators (KPI), metrics and key data points to monitor the health of
+                        a business, department or specific process.
                     </div>
-                    <a href="/backend/reports.html" class="know-more">Know More <img src="/backend/img/right-arrow.svg" alt="Uni Pro Admin"></a>
+                    <a href="/backend/reports.html" class="know-more">Know More <img src="/backend/img/right-arrow.svg"
+                                                                                     alt="Uni Pro Admin"></a>
 
                 </div>
             </div>
@@ -42,9 +45,12 @@
                                 <div class="actions">
                                     <button type="submit" class="btn btn-primary ms-auto">Sign Up</button>
                                 </div>
+                                <span class="additional-link">Have an account? <a href="/backend/login.html"
+                                                                                  class="btn btn-light">Login</a></span>
                             </div>
                             <div class="login-footer">
-                                <span class="additional-link">Have an account? <a href="/backend/login.html" class="btn btn-light">Login</a></span>
+                                <a href="{{route('auth.client.gmail')}}" ><img class="w-100"
+                                        src="/backend/img/btns/google.png" alt=""></a>
                             </div>
                         </div>
                     </form>
@@ -52,7 +58,5 @@
             </div>
         </div>
         <!-- Row end -->
-
-
     </div>
 </div>
