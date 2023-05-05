@@ -3,6 +3,7 @@
 use App\Http\Livewire\Client\Profile\Dashboard\index;
 use Illuminate\Support\Facades\Route;
 
+
 Route::get('auth/logout', [\App\Http\Livewire\Client\Auth\Index::class, 'clientLogout'])->name('auth.client.logout')->middleware('auth:web');
 
 //Route::get('/', Home::class)->name('client.home');
@@ -29,4 +30,7 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth:web'], function () {
 
 Route::group(['prefix' => 'admin', 'name' => 'admin.',/* 'middleware' =>'auth:admin'*/], function () {
     Route::get('/dashboard', App\Http\Livewire\Admin\Dashboard\Index::class)->name('dashboard');
+//    Route::get('/permission', Permission::class)->name('permission');
+//    Route::get('/role', Role::class)->name('role');
+    Route::get('/category', \App\Http\Livewire\Admin\Category\Index::class)->name('category');
 });
