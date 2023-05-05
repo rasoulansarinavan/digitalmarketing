@@ -2,62 +2,7 @@
 
     <!-- Row start -->
     <div class="row gutters">
-        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
-
-            <!-- Card start -->
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-title">Add services</div>
-                </div>
-                <div class="card-body">
-                    <!-- Row start -->
-                    <div class="row gutters">
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <input class="form-control" type="text">
-                                <div class="field-placeholder">Service <span class="text-danger">*</span></div>
-                            </div>
-                            <!-- Field wrapper end -->
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <select name="" id="">
-                                    <option value="">name</option>
-                                    <option value="">full name</option>
-                                </select>
-                                <div class="field-placeholder">Category <span class="text-danger">*</span></div>
-                            </div>
-                            <!-- Field wrapper end -->
-                        </div>
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <textarea class="form-control" rows="2"></textarea>
-                                <div class="field-placeholder">Icon <span class="text-danger">*</span></div>
-
-                            </div>
-                            <!-- Field wrapper end -->
-
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <button class="btn btn-primary">Submit</button>
-                        </div>
-                    </div>
-                    <!-- Row end -->
-
-                </div>
-            </div>
-            <!-- Card end -->
-
-            <!-- Row end -->
-
-        </div>
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
             <div class="card">
                 <div class="card-body">
@@ -75,42 +20,95 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Service Name
+                                        style="width: 84.1016px;">Name
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Category Name
+                                        style="width: 84.1016px;">Email
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Icon
+                                        style="width: 84.1016px;">Phone
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Actions: activate to sort column ascending"
-                                        style="width: 71.276px;">Actions
+                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
+                                        style="width: 84.1016px;">Permission
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
+                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
+                                        style="width: 84.1016px;">Role
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr role="row" class="odd">
-                                    <td>1</td>
-                                    <td>$879.00</td>
-                                    <td>34</td>
-                                    <td>34</td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                               data-original-title="Edit">
-                                                <i class="icon-edit1 text-info"></i>
-                                            </a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                               data-original-title="Delete">
-                                                <i class="icon-x-circle text-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @foreach($users as $user)
+                                    <tr role="row" class="odd">
+                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->mobile}}</td>
+                                        <td>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <select class="select-single js-states select2-hidden-accessible"
+                                                            title="Select Product Category" data-live-search="true"
+                                                            data-select2-id="select2-data-9-l6lp" tabindex="-1"
+                                                            aria-hidden="true"
+                                                            wire:change="permission"
+                                                            class="form-select @error('permission') error-input-border @enderror"
+                                                            name="permission" id="permission">
+                                                        @foreach($permissions as $permission)
+                                                            <option
+                                                                @if(isset($permission->name))
+                                                                    selected
+                                                                @endif
+                                                                value="{{ $permission->name }}">{{ $permission->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <div class="field-placeholder">Permissions <span
+                                                            class="text-danger">*</span></div>
+                                                    @foreach($errors->get('permission') as $message)
+                                                        <span wire:loading.remove
+                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                    @endforeach
+                                                </div>
+                                                <!-- Field wrapper end -->
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <!-- Field wrapper start -->
+                                                <div class="field-wrapper">
+                                                    <select class="select-single js-states select2-hidden-accessible"
+                                                            title="Select Product Category" data-live-search="true"
+                                                            data-select2-id="select2-data-9-l6lp" tabindex="-1"
+                                                            aria-hidden="true"
+                                                            wire:change="role"
+                                                            class="form-select @error('role') error-input-border @enderror"
+                                                            name="role" id="role">
+                                                        @foreach($roles as $role)
+                                                            <option
+                                                                @if(isset($role->name))
+                                                                    selected
+                                                                @endif
+                                                                value="{{ $role->name }}">{{ $role->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <div class="field-placeholder">Roles <span
+                                                            class="text-danger">*</span></div>
+                                                    @foreach($errors->get('role') as $message)
+                                                        <span wire:loading.remove
+                                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                                    @endforeach
+                                                </div>
+                                                <!-- Field wrapper end -->
+                                            </div>
+                                        </td>
 
+                                        <!-- Field wrapper end -->
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                             <div class="dataTables_info" id="copy-print-csv_info" role="status" aria-live="polite">
