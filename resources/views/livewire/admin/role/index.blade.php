@@ -7,46 +7,31 @@
             <!-- Card start -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Add services</div>
+                    <div class="card-title">Add Roles</div>
                 </div>
                 <div class="card-body">
                     <!-- Row start -->
                     <div class="row gutters">
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <input class="form-control" type="text">
-                                <div class="field-placeholder">Service <span class="text-danger">*</span></div>
+                        <form wire:submit.prevent="saveRole(Object.fromEntries(new FormData($event.target)))">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <label for="name"></label>
+                                    <input name="name" id="name" value="{{@$name}}" wire:model.defer="name"
+                                           class="form-control @error('name') error-input-border @enderror"
+                                           type="text">
+                                    <div class="field-placeholder">Role <span class="text-danger">*</span></div>
+                                    @foreach ($errors->get('name') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+                                </div>
+                                <!-- Field wrapper end -->
                             </div>
-                            <!-- Field wrapper end -->
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <select name="" id="">
-                                    <option value="">name</option>
-                                    <option value="">full name</option>
-                                </select>
-                                <div class="field-placeholder">Category <span class="text-danger">*</span></div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                            <!-- Field wrapper end -->
-                        </div>
-
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                            <!-- Field wrapper start -->
-                            <div class="field-wrapper">
-                                <textarea class="form-control" rows="2"></textarea>
-                                <div class="field-placeholder">Icon <span class="text-danger">*</span></div>
-
-                            </div>
-                            <!-- Field wrapper end -->
-
-                        </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <button class="btn btn-primary">Submit</button>
-                        </div>
+                        </form>
                     </div>
                     <!-- Row end -->
 
@@ -75,16 +60,9 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Service Name
+                                        style="width: 84.1016px;">Role Name
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Category Name
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Icon
-                                    </th>
+
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Actions: activate to sort column ascending"
                                         style="width: 71.276px;">Actions
@@ -92,30 +70,28 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr role="row" class="odd">
-                                    <td>1</td>
-                                    <td>$879.00</td>
-                                    <td>34</td>
-                                    <td>34</td>
-                                    <td>
-                                        <div class="actions">
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                               data-original-title="Edit">
-                                                <i class="icon-edit1 text-info"></i>
-                                            </a>
-                                            <a href="#" data-toggle="tooltip" data-placement="top" title=""
-                                               data-original-title="Delete">
-                                                <i class="icon-x-circle text-danger"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-
+                                @foreach($roles as $role)
+                                    <tr role="row" class="odd">
+                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $role->name }}</td>
+                                        <td>
+                                            <div class="actions">
+                                                <a wire:click="editRole('{{$role->id}}')"
+                                                   data-toggle="tooltip" data-placement="top" title=""
+                                                   data-original-title="Edit">
+                                                    <i class="icon-edit1 text-info"></i>
+                                                </a>
+                                                <a wire:click="deleteRole('{{$role->id}}')"
+                                                   data-toggle="tooltip" data-placement="top" title=""
+                                                   data-original-title="Delete">
+                                                    <i class="icon-x-circle text-danger"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
-                            <div class="dataTables_info" id="copy-print-csv_info" role="status" aria-live="polite">
-                                Showing 1 to 5 of 5 entries
-                            </div>
                             <div class="dataTables_paginate paging_simple_numbers" id="copy-print-csv_paginate">
                                 <ul class="pagination pagination-sm">
                                     <li class="paginate_button page-item previous disabled"
@@ -140,5 +116,4 @@
         </div>
     </div>
     <!-- Row end -->
-
 </div>
