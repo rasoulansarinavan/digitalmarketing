@@ -19,7 +19,8 @@ class UserLevel extends Model
             ],
             [
                 'title' => $formData['title'],
-                'description' => $formData['description'],
+                'short_description' => $formData['short_description'],
+                'long_description' => $formData['long_description'],
                 'icon' => $formData['icon']
             ]
         );

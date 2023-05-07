@@ -10,7 +10,7 @@ class Index extends Component
 {
 
 
-    public $title = '', $description = '', $icon = '', $level_id;
+    public $title = '', $short_description = '', $long_description = '', $icon = '', $level_id;
     protected $listeners = ['delete'];
 
     public function saveUserLevel($formData, UserLevel $levels)
@@ -19,14 +19,16 @@ class Index extends Component
             $level_id = $this->level_id;
             $validator = Validator::make($formData, [
                 'title' => 'required',
-                'description' => ' regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+                'short_description' => ' required',
+                'long_description' => ' required',
                 'icon' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
             ]);
         } else {
             $level_id = 0;
             $validator = Validator::make($formData, [
                 'title' => 'required',
-                'description' => ' regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+                'short_description' => ' required',
+                'long_description' => ' required',
                 'icon' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
             ]);
         }
@@ -39,7 +41,8 @@ class Index extends Component
         ]);
 
         $this->title = '';
-        $this->description = '';
+        $this->short_description = '';
+        $this->long_description = '';
         $this->icon = '';
         $this->level_id = '';
     }
@@ -49,7 +52,8 @@ class Index extends Component
         $level = UserLevel::query()->where('id', $level_id)->first();
 
         $this->title = $level->title;
-        $this->description = $level->description;
+        $this->short_description = $level->short_description;
+        $this->long_description = $level->long_description;
         $this->icon = $level->icon;
         $this->level_id = $level->id;
     }
