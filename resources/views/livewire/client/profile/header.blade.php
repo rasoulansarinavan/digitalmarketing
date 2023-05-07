@@ -511,7 +511,7 @@
                 <li class="dropdown">
                     <a href="/backend/#" id="userSettings" class="user-settings" data-toggle="dropdown" aria-haspopup="true">
 										<span class="avatar">
-											<img src="{{\Illuminate\Support\Facades\Auth::user()->picture}}" alt="User Avatar">
+{{--											<img src="{{\Illuminate\Support\Facades\Auth::user()->picture}}" alt="User Avatar">--}}
 											<span class="status busy"></span>
 										</span>
                     </a>

@@ -1,63 +1,62 @@
-<div>
-    <nav class="sidebar-wrapper">
+<nav class="sidebar-wrapper">
 
-        <!-- Sidebar content start -->
-        <div class="sidebar-tabs">
+    <!-- Sidebar content start -->
+    <div class="sidebar-tabs">
 
-            <!-- Tabs nav start -->
-            <div class="nav" role="tablist" aria-orientation="vertical">
-                <a href="/backend/dark/#" class="logo">
-                    <img src="/backend/dark/img/logo.svg" alt="Uni Pro Admin">
-                </a>
-                <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="/backend/dark/#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
-                    <i class="icon-home2"></i>
-                    <span class="nav-link-text">Dashboards</span>
-                </a>
-                <a class="nav-link" id="product-tab" data-bs-toggle="tab" href="/backend/dark/#tab-product" role="tab" aria-controls="tab-product" aria-selected="false">
-                    <i class="icon-layers2"></i>
-                    <span class="nav-link-text">Product</span>
-                </a>
-                <a class="nav-link" id="pages-tab" data-bs-toggle="tab" href="/backend/dark/#tab-pages" role="tab" aria-controls="tab-pages" aria-selected="false">
-                    <i class="icon-book-open"></i>
-                    <span class="nav-link-text">Pages</span>
-                </a>
-                <a class="nav-link" id="forms-tab" data-bs-toggle="tab" href="/backend/dark/#tab-forms" role="tab" aria-controls="tab-forms" aria-selected="false">
-                    <i class="icon-edit1"></i>
-                    <span class="nav-link-text">Forms</span>
-                </a>
-                <a class="nav-link" id="components-tab" data-bs-toggle="tab" href="/backend/dark/#tab-components" role="tab" aria-controls="tab-components" aria-selected="false">
-                    <i class="icon-box"></i>
-                    <span class="nav-link-text">Components</span>
-                </a>
-                <a class="nav-link" id="graphs-tab" data-bs-toggle="tab" href="/backend/dark/#tab-graphs" role="tab" aria-controls="tab-graphs" aria-selected="false">
-                    <i class="icon-pie-chart1"></i>
-                    <span class="nav-link-text">Graphs</span>
-                </a>
-                <a class="nav-link" id="authentication-tab" data-bs-toggle="tab" href="/backend/dark/#tab-authentication" role="tab" aria-controls="tab-authentication" aria-selected="false">
-                    <i class="icon-unlock"></i>
-                    <span class="nav-link-text">Authentication</span>
-                </a>
-                <a class="nav-link settings" id="settings-tab" data-bs-toggle="tab" href="/backend/dark/#tab-settings" role="tab" aria-controls="tab-authentication" aria-selected="false">
-                    <i class="icon-settings1"></i>
-                    <span class="nav-link-text">Settings</span>
-                </a>
-            </div>
-            <!-- Tabs nav end -->
+        <!-- Tabs nav start -->
+        <div class="nav" role="tablist" aria-orientation="vertical">
+            <a href="/backend/dark/#" class="logo">
+                <img src="/backend/dark/img/logo.svg" alt="Uni Pro Admin">
+            </a>
+            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="/backend/dark/#tab-home" role="tab" aria-controls="tab-home" aria-selected="true">
+                <i class="icon-home2"></i>
+                <span class="nav-link-text">Dashboards</span>
+            </a>
+            <a class="nav-link" id="product-tab" data-bs-toggle="tab" href="/backend/dark/#tab-product" role="tab" aria-controls="tab-product" aria-selected="false">
+                <i class="icon-layers2"></i>
+                <span class="nav-link-text">Product</span>
+            </a>
+            <a class="nav-link" id="pages-tab" data-bs-toggle="tab" href="/backend/dark/#tab-pages" role="tab" aria-controls="tab-pages" aria-selected="false">
+                <i class="icon-book-open"></i>
+                <span class="nav-link-text">Pages</span>
+            </a>
+            <a class="nav-link" id="forms-tab" data-bs-toggle="tab" href="/backend/dark/#tab-forms" role="tab" aria-controls="tab-forms" aria-selected="false">
+                <i class="icon-edit1"></i>
+                <span class="nav-link-text">Forms</span>
+            </a>
+            <a class="nav-link" id="components-tab" data-bs-toggle="tab" href="/backend/dark/#tab-components" role="tab" aria-controls="tab-components" aria-selected="false">
+                <i class="icon-box"></i>
+                <span class="nav-link-text">Components</span>
+            </a>
+            <a class="nav-link" id="graphs-tab" data-bs-toggle="tab" href="/backend/dark/#tab-graphs" role="tab" aria-controls="tab-graphs" aria-selected="false">
+                <i class="icon-pie-chart1"></i>
+                <span class="nav-link-text">Graphs</span>
+            </a>
+            <a class="nav-link" id="authentication-tab" data-bs-toggle="tab" href="/backend/dark/#tab-authentication" role="tab" aria-controls="tab-authentication" aria-selected="false">
+                <i class="icon-unlock"></i>
+                <span class="nav-link-text">Authentication</span>
+            </a>
+            <a class="nav-link settings" id="settings-tab" data-bs-toggle="tab" href="/backend/dark/#tab-settings" role="tab" aria-controls="tab-authentication" aria-selected="false">
+                <i class="icon-settings1"></i>
+                <span class="nav-link-text">Settings</span>
+            </a>
+        </div>
+        <!-- Tabs nav end -->
 
-            <!-- Tabs content start -->
-            <div class="tab-content">
+        <!-- Tabs content start -->
+        <div class="tab-content">
 
-                <!-- Chat tab -->
-                <div class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
+            <!-- Chat tab -->
+            <div class="tab-pane fade active show" id="tab-home" role="tabpanel" aria-labelledby="home-tab">
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Dashboards
-                    </div>
-                    <!-- Tab content header end -->
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Dashboards
+                </div>
+                <!-- Tab content header end -->
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li>
@@ -131,35 +130,35 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 108.679px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <a href="/backend/dark/orders.html" class="red">
-                            <div class="bg-avatar">12</div>
-                            <h5>New Orders</h5>
-                        </a>
-                        <a href="/backend/dark/invoices-list.html" class="blue">
-                            <div class="bg-avatar">24</div>
-                            <h5>Bills Pending</h5>
-                        </a>
-                    </div>
-                    <!-- Sidebar actions ends -->
-
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <a href="/backend/dark/orders.html" class="red">
+                        <div class="bg-avatar">12</div>
+                        <h5>New Orders</h5>
+                    </a>
+                    <a href="/backend/dark/invoices-list.html" class="blue">
+                        <div class="bg-avatar">24</div>
+                        <h5>Bills Pending</h5>
+                    </a>
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Pages tab -->
-                <div class="tab-pane fade" id="tab-product" role="tabpanel" aria-labelledby="product-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Product
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Pages tab -->
+            <div class="tab-pane fade" id="tab-product" role="tabpanel" aria-labelledby="product-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Product
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li>
@@ -200,30 +199,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile">
-                            <i class="icon-headphones"></i> 24/7 Support
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile">
+                        <i class="icon-headphones"></i> 24/7 Support
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Pages tab -->
-                <div class="tab-pane fade" id="tab-pages" role="tabpanel" aria-labelledby="pages-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Pages
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Pages tab -->
+            <div class="tab-pane fade" id="tab-pages" role="tabpanel" aria-labelledby="pages-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Pages
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li>
@@ -273,30 +272,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile green">
-                            <i class="icon-pie-chart1"></i> 5GB Free Space
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile green">
+                        <i class="icon-pie-chart1"></i> 5GB Free Space
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Forms tab -->
-                <div class="tab-pane fade" id="tab-forms" role="tabpanel" aria-labelledby="forms-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Forms
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Forms tab -->
+            <div class="tab-pane fade" id="tab-forms" role="tabpanel" aria-labelledby="forms-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Forms
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li class="list-heading">Form Layouts</li>
@@ -356,30 +355,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile red">
-                            <i class="icon-mail"></i> Inbox Full
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile red">
+                        <i class="icon-mail"></i> Inbox Full
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Components tab -->
-                <div class="tab-pane fade" id="tab-components" role="tabpanel" aria-labelledby="components-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Components
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Components tab -->
+            <div class="tab-pane fade" id="tab-components" role="tabpanel" aria-labelledby="components-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Components
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li>
@@ -429,30 +428,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile yellow">
-                            <i class="icon-arrow-down-circle"></i> Download Reports
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile yellow">
+                        <i class="icon-arrow-down-circle"></i> Download Reports
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Graphs tab -->
-                <div class="tab-pane fade" id="tab-graphs" role="tabpanel" aria-labelledby="graphs-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Graphs &amp; Tables
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Graphs tab -->
+            <div class="tab-pane fade" id="tab-graphs" role="tabpanel" aria-labelledby="graphs-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Graphs &amp; Tables
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li class="list-heading">Graphs</li>
@@ -480,30 +479,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile pink">
-                            <i class="icon-align-right1"></i> RTL Support
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile pink">
+                        <i class="icon-align-right1"></i> RTL Support
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Authentication tab -->
-                <div class="tab-pane fade" id="tab-authentication" role="tabpanel" aria-labelledby="authentication-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Authentication
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Authentication tab -->
+            <div class="tab-pane fade" id="tab-authentication" role="tabpanel" aria-labelledby="authentication-tab">
 
-                    <!-- Sidebar menu starts -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Authentication
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Sidebar menu starts -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-menu">
                             <ul>
                                 <li>
@@ -535,30 +534,30 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <!-- Sidebar menu ends -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Sidebar menu ends -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile blue">
-                            <a href="/backend/dark/pricing.html" class="btn btn-light m-auto">Upgrade Account</a>
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile blue">
+                        <a href="/backend/dark/pricing.html" class="btn btn-light m-auto">Upgrade Account</a>
                     </div>
-                    <!-- Sidebar actions ends -->
-
                 </div>
+                <!-- Sidebar actions ends -->
 
-                <!-- Settings tab -->
-                <div class="tab-pane fade" id="tab-settings" role="tabpanel" aria-labelledby="settings-tab">
+            </div>
 
-                    <!-- Tab content header start -->
-                    <div class="tab-pane-header">
-                        Settings
-                    </div>
-                    <!-- Tab content header end -->
+            <!-- Settings tab -->
+            <div class="tab-pane fade" id="tab-settings" role="tabpanel" aria-labelledby="settings-tab">
 
-                    <!-- Settings start -->
-                    <div class="sidebarMenuScroll">
+                <!-- Tab content header start -->
+                <div class="tab-pane-header">
+                    Settings
+                </div>
+                <!-- Tab content header end -->
+
+                <!-- Settings start -->
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: calc(100vh - 250px);"><div class="sidebarMenuScroll" style="overflow: hidden; width: auto; height: calc(100vh - 250px);">
                         <div class="sidebar-settings">
                             <div class="accordion" id="settingsAccordion">
                                 <div class="accordion-item">
@@ -570,17 +569,17 @@
                                     <div id="genCollapse" class="accordion-collapse collapse show" aria-labelledby="genInfo" data-bs-parent="#settingsAccordion">
                                         <div class="accordion-body">
                                             <div class="field-wrapper">
-                                                <input type="text" value="Jeivxezer Lopexz" />
+                                                <input type="text" value="Jeivxezer Lopexz">
                                                 <div class="field-placeholder">Full Name</div>
                                             </div>
 
                                             <div class="field-wrapper">
-                                                <input type="email" value="jeivxezer-lopexz@email.com" />
+                                                <input type="email" value="jeivxezer-lopexz@email.com">
                                                 <div class="field-placeholder">Email</div>
                                             </div>
 
                                             <div class="field-wrapper">
-                                                <input type="text" value="0 0000 00000" />
+                                                <input type="text" value="0 0000 00000">
                                                 <div class="field-placeholder">Contact</div>
                                             </div>
                                             <div class="field-wrapper m-0">
@@ -629,7 +628,7 @@
                                                     <div class="noti-block">
                                                         <div>Alerts</div>
                                                         <div class="form-switch">
-                                                            <input class="form-check-input" type="checkbox" id="showAlertss" checked>
+                                                            <input class="form-check-input" type="checkbox" id="showAlertss" checked="">
                                                             <label class="form-check-label" for="showAlertss"></label>
                                                         </div>
                                                     </div>
@@ -661,23 +660,22 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Settings end -->
+                    </div><div class="slimScrollBar" style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+                <!-- Settings end -->
 
-                    <!-- Sidebar actions starts -->
-                    <div class="sidebar-actions">
-                        <div class="support-tile blue">
-                            <a href="/backend/dark/account-settings.html" class="btn btn-light m-auto">Advance Settings</a>
-                        </div>
+                <!-- Sidebar actions starts -->
+                <div class="sidebar-actions">
+                    <div class="support-tile blue">
+                        <a href="/backend/dark/account-settings.html" class="btn btn-light m-auto">Advance Settings</a>
                     </div>
-                    <!-- Sidebar actions ends -->
                 </div>
-
+                <!-- Sidebar actions ends -->
             </div>
-            <!-- Tabs content end -->
 
         </div>
-        <!-- Sidebar content end -->
+        <!-- Tabs content end -->
 
-    </nav>
-</div>
+    </div>
+    <!-- Sidebar content end -->
+
+</nav>
