@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('picture');
             $table->string('mobile')->nullable();
+            $table->foreignId('user_level_id')->constrained();
             $table->rememberToken();
             $table->timestamps();
         });
