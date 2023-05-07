@@ -44,6 +44,12 @@
     <!-- Plugins Customization RTL -->
     <link rel="stylesheet" href="/backend/css/plugins-rtl.css">
 
+    <!-- Uploader CSS -->
+    <link rel="stylesheet" href="/backend/vendor/dropzone/dropzone.min.css"/>
+
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="/backend/vendor/bs-select/bs-select.css"/>
+
     <link rel="stylesheet" href="/persian-fonts/fontiran.css">
     <link rel="stylesheet" href="/persian-fonts/style.css">
 
@@ -62,7 +68,7 @@
 <div class="page-wrapper">
 
     <!-- Sidebar wrapper start -->
-    <livewire:client.profile.menu />
+    <livewire:client.profile.menu/>
     <!-- Sidebar wrapper end -->
 
     <!-- *************
@@ -73,7 +79,7 @@
         <!-- Page header starts -->
 
         <!-- Page header ends -->
-        <livewire:client.profile.header />
+        <livewire:client.profile.header/>
         <!-- Content wrapper scroll start -->
 
         {{$slot}}
@@ -115,6 +121,13 @@
 <!-- Date Range JS -->
 <script src="/backend/vendor/daterange/daterange.js"></script>
 <script src="/backend/vendor/daterange/custom-daterange.js"></script>
+
+<!-- Dropzone JS -->
+<script src="/backend/dropzone/dropzone.min.js"></script>
+
+<!-- Bootstrap Select JS -->
+<script src="/backend/bs-select/bs-select.min.js"></script>
+<script src="/backend/bs-select/bs-select-custom.js"></script>
 
 <!-- Apex Charts -->
 <script src="/backend/vendor/apex/apexcharts.min.js"></script>
