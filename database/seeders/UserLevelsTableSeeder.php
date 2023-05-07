@@ -46,6 +46,15 @@ class UserLevelsTableSeeder extends Seeder
                 'created_at' => '2023-05-07 21:18:01',
                 'updated_at' => '2023-05-07 21:18:01',
             ),
+            3 => 
+            array (
+                'id' => 8,
+                'title' => 'سطح چهار',
+                'description' => '* الزامی فقط برای رمزارز',
+                'icon' => '#45334',
+                'created_at' => '2023-05-07 21:47:23',
+                'updated_at' => '2023-05-07 21:47:23',
+            ),
         ));
         
         
