@@ -10,7 +10,7 @@ class Index extends Component
 {
 
     public $title = '', $category_id, $icon = '', $cat_id;
-    protected $listeners = ['delete'];
+    protected $listeners = ['delete', 'saveCategory'];
 
     public function saveCategory($formData, Category $categories)
     {
@@ -33,8 +33,12 @@ class Index extends Component
         $this->resetValidation();
         $categories->saveCategory($formData, $cat_id);
 
-        $this->dispatchBrowserEvent('success', [
-            'message' => trans('alerts.success')
+        $this->dispatchBrowserEvent('swal:success', [
+//            'message' => 'Add operation was successful'
+            'type' => 'success',
+            'title' => trans('Are you sure???'),
+            'text' => '',
+            'id' => $cat_id
         ]);
 
         $this->title = '';
@@ -52,7 +56,6 @@ class Index extends Component
         $this->icon = $category->icon;
         $this->cat_id = $category->id;
     }
-
 
     public function deleteCategory($id)
     {
