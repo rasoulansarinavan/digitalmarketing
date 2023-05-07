@@ -7,17 +7,12 @@
             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                 <div class="login-about">
                     <div class="slogan">
-                        <span>Design</span>
-                        <span>Made</span>
-                        <span>Simple.</span>
+                        <span>شروعی جدید</span>
+                        <span> با دنیایی پر از امکانات</span>
                     </div>
                     <div class="about-desc">
-                        UniPro a data dashboard is an information management tool that visually tracks, analyzes and
-                        displays key performance indicators (KPI), metrics and key data points to monitor the health of
-                        a business, department or specific process.
+                        اگر به دنبال یک تجربه بی‌نظیر از دیجیتال مارکتینگ هستید، بهترین راه برای شروع، ثبت نام در سایت ماست! با ورود به دنیایی از خدمات و امکانات دیجیتال مارکتینگ، می‌توانید به راحتی به تخفیف‌های ویژه، مقالات اختصاصی، وبینارها و آموزش‌های جذاب دسترسی پیدا کنید. با حساب کاربری خود، شما به یک دنیای پر از امکانات دسترسی خواهید داشت که در آن می‌توانید به بهبود کسب و کار خود بپردازید و دانش خود را در زمینه دیجیتال مارکتینگ بهبود بخشید. پس اکنون بهترین زمان برای ثبت نام در سایت ماست. بیایید با هیجان، خلاقیت و ایده‌های جدید، دنیایی جذاب را با هم کشف کنیم!
                     </div>
-                    <a href="/backend/reports.html" class="know-more">Know More <img src="/backend/img/right-arrow.svg"
-                                                                                     alt="Uni Pro Admin"></a>
 
                 </div>
             </div>
@@ -29,28 +24,23 @@
                                 <a href="/backend/reports.html" class="login-logo">
                                     <img src="/backend/img/logo.svg" alt="Uni Pro Admin">
                                 </a>
-                                <h6>Welcome to UniPro dashboard,<br>Create your account.</h6>
+                                <h6>خوش آمدید،<br>ورود و یا ثبت نام به سادگی فقط با یک کلیک</h6>
                                 <div class="field-wrapper">
-                                    <input type="email" autofocus>
-                                    <div class="field-placeholder">Email ID</div>
+                                    <a href="{{route('auth.client.gmail')}}" class="w-100 btn btn-outline-info">
+                                        <img src="/backend/img/google.svg" alt="" style="background: #ffffff;padding: 5px">
+                                          ورود و ثبت نام با گوگل
+                                    </a>
                                 </div>
                                 <div class="field-wrapper">
-                                    <input type="password">
-                                    <div class="field-placeholder">Password</div>
+                                    <a href="" type="button" class="w-100 btn btn-outline-info">
+                                        <img src="/backend/img/github.svg" alt="" style="background: #ffffff;padding: 5px">
+                                        ورود و ثبت نام با گیت هاب
+                                    </a>
                                 </div>
-                                <div class="field-wrapper mb-3">
-                                    <input type="password">
-                                    <div class="field-placeholder">Confirm Password</div>
-                                </div>
-                                <div class="actions">
-                                    <button type="submit" class="btn btn-primary ms-auto">Sign Up</button>
-                                </div>
-                                <span class="additional-link">Have an account? <a href="/backend/login.html"
-                                                                                  class="btn btn-light">Login</a></span>
+
                             </div>
                             <div class="login-footer">
-                                <a href="{{route('auth.client.gmail')}}" ><img class="w-100"
-                                        src="/backend/img/btns/google.png" alt=""></a>
+                                <a href="{{route('auth.client.gmail')}}" ></a>
                             </div>
                         </div>
                     </form>

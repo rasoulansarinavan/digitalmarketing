@@ -10,6 +10,8 @@
     <title>Digital marketing</title>
     <link rel="stylesheet" href="/backend/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="/backend/css/main-rtl.css">
+    <link rel="stylesheet" href="/persian-fonts/fontiran.css">
+    <link rel="stylesheet" href="/persian-fonts/style.css">
 
 </head>
 <body class="authentication">
