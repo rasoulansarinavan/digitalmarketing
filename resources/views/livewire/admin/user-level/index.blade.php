@@ -7,12 +7,12 @@
             <!-- Card start -->
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Add services</div>
+                    <div class="card-title">Add UserLevel</div>
                 </div>
                 <div class="card-body">
                     <!-- Row start -->
                     <div class="row gutters">
-                        <form wire:submit.prevent="saveCategory(Object.fromEntries(new FormData($event.target)))">
+                        <form wire:submit.prevent="saveUserLevel(Object.fromEntries(new FormData($event.target)))">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
@@ -28,33 +28,26 @@
                                 </div>
                                 <!-- Field wrapper end -->
                             </div>
+
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
-                                    <select class="select-single js-states select2-hidden-accessible"
-                                            title="Select Product Category" data-live-search="true"
-                                            data-select2-id="select2-data-9-l6lp" tabindex="-1" aria-hidden="true"
-                                            wire:model.defer="category_id"
-                                            class="form-select @error('category_id') error-input-border @enderror"
-                                            name="category_id" id="category_id">
-                                        <option value="0">parent</option>
-                                        @foreach($categories as $category)
-                                            <option
-                                                @if(isset($category->title))
-                                                    selected
-                                                @endif
-                                                value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="field-placeholder">Category <span class="text-danger">*</span></div>
-                                    @foreach($errors->get('category_id') as $message)
+                                    <textarea wire:model.defer="description"
+                                              name="description" id="description"
+                                              class="form-control  @error('description') error-input-border @enderror"
+                                              rows="2">
+
+                                    </textarea>
+                                    <div class="field-placeholder">Description <span class="text-danger">*</span></div>
+                                    @foreach($errors->get('description') as $message)
                                         <span wire:loading.remove
                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                     @endforeach
                                 </div>
                                 <!-- Field wrapper end -->
-                            </div>
 
+                            </div>
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
                                 <!-- Field wrapper start -->
@@ -106,11 +99,11 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Service Name
+                                        style="width: 84.1016px;">Level Name
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Category Name
+                                        style="width: 84.1016px;">Description
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
@@ -123,25 +116,20 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $category)
+                                @foreach($levels as $level)
                                     <tr role="row" class="odd">
                                         <td>{{ $loop->index+1 }}</td>
-                                        <td>{{ $category->title }}</td>
-                                        @if($category->category_id ==0)
-                                            <td>Parent</td>
-                                        @elseif(isset($category->category_id))
-                                            <td>{{ $category->category->title }}</td>
-                                        @endif
-
-                                        <td>{{ $category->icon }}</td>
+                                        <td>{{ $level->title }}</td>
+                                        <td>{{ $level->description }}</td>
+                                        <td>{{ $level->icon }}</td>
                                         <td>
                                             <div class="actions">
-                                                <a wire:click="editCategory('{{$category->id}}')"
+                                                <a wire:click="editLevel('{{$level->id}}')"
                                                    data-toggle="tooltip" data-placement="top" title=""
                                                    data-original-title="Edit">
                                                     <i class="icon-edit1 text-info"></i>
                                                 </a>
-                                                <a wire:click="deleteCategory('{{$category->id}}')"
+                                                <a wire:click="deleteLevel('{{$level->id}}')"
                                                    data-toggle="tooltip" data-placement="top" title=""
                                                    data-original-title="Delete">
                                                     <i class="icon-x-circle text-danger"></i>
