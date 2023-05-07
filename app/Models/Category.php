@@ -13,7 +13,7 @@ class Category extends Model
 
     public function saveCategory($formData, $cat_id)
     {
-         Category::query()->updateOrCreate(
+        Category::query()->updateOrCreate(
             [
                 'id' => $cat_id
             ],
@@ -24,4 +24,10 @@ class Category extends Model
             ]
         );
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
 }

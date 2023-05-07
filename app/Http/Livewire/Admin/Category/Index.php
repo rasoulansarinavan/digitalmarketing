@@ -17,14 +17,14 @@ class Index extends Component
         if ($this->cat_id != null) {
             $cat_id = $this->cat_id;
             $validator = Validator::make($formData, [
-                'title' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+                'title' => 'required',
                 'category_id' => ' regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
                 'icon' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
             ]);
         } else {
             $cat_id = 0;
             $validator = Validator::make($formData, [
-                'title' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+                'title' => 'required',
                 'category_id' => ' regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
                 'icon' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
             ]);

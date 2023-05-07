@@ -130,7 +130,7 @@
                                         @if($category->category_id ==0)
                                             <td>Parent</td>
                                         @elseif(isset($category->category_id))
-                                            <td>{{ $category->category_id }}</td>
+                                            <td>{{ $category->category->title }}</td>
                                         @endif
 
                                         <td>{{ $category->icon }}</td>
