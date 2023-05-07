@@ -13,7 +13,8 @@ return new class extends Migration {
         Schema::create('user_levels', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
+            $table->string('short_description');
+            $table->text('long_description');
             $table->text('icon');
             $table->timestamps();
         });
