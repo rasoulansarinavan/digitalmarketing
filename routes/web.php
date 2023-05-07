@@ -36,5 +36,7 @@ Route::group(['prefix' => 'admin', 'name' => 'admin.',/* 'middleware' =>'auth:ad
     Route::get('/role', \App\Http\Livewire\Admin\Role\Index::class)->name('role');
     Route::get('/category', \App\Http\Livewire\Admin\Category\Index::class)->name('category');
     Route::get('/userLevels', \App\Http\Livewire\Admin\UserLevel\Index::class)->name('userLevels');
+    Route::get('/products', \App\Http\Livewire\Admin\Products\Index::class)->name('products');
+
 });
-///////client//////
+

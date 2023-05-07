@@ -24,4 +24,5 @@ class UserLevel extends Model
             ]
         );
     }
+
 }
