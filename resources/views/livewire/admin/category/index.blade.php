@@ -43,7 +43,7 @@
                                                 @if(isset($category->title))
                                                     selected
                                                 @endif
-                                                value="{{ $category->title }}">{{ $category->title }}</option>
+                                                value="{{ $category->id }}">{{ $category->title }}</option>
                                         @endforeach
                                     </select>
                                     <div class="field-placeholder">Category <span class="text-danger">*</span></div>

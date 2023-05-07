@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -18,13 +18,13 @@
         ************ Common Css Files *************
     ************ -->
     <!-- Bootstrap css -->
-    <link rel="stylesheet" href="/backend/dark/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="/backend/dark/css/bootstrap.min.css">
 
     <!-- Icomoon Font Icons css -->
     <link rel="stylesheet" href="/backend/dark/fonts/style.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="/backend/dark/css/main-rtl.css">
+    <link rel="stylesheet" href="/backend/dark/css/main.css">
 
 
     <!-- *************
@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="/backend/dark/vendor/daterange/daterange.css">
 
     <!-- Plugins Customization RTL -->
-    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">
+{{--    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">--}}
     <link rel="stylesheet" href="/persian-fonts/fontiran.css">
     <link rel="stylesheet" href="/persian-fonts/style.css">
     <link rel="stylesheet" href="/backend/css/toastr.min.css">
@@ -135,6 +135,10 @@
 <script src="/backend/dark/vendor/rating/raty.js"></script>
 <script src="/backend/dark/vendor/rating/raty-custom.js"></script>
 
+
+<!-- Circleful Charts -->
+<script src="/backend/dark/vendor/circliful/circliful.min.js"></script>
+<script src="/backend/dark/vendor/circliful/circliful.custom.js"></script>
 <!-- Main Js Required -->
 <script src="/backend/dark/js/main.js"></script>
 
