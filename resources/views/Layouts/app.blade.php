@@ -80,8 +80,6 @@
 
 
     </div>
-    <livewire:client.profile.modal/>
-
 </div>
 
 <!-- Required jQuery first, then Bootstrap Bundle JS -->
@@ -121,6 +119,12 @@
 <!-- Rating JS -->
 <script src="/backend/vendor/rating/raty.js"></script>
 <script src="/backend/vendor/rating/raty-custom.js"></script>
+
+
+<!-- Input Mask JS -->
+<script src="/backend/vendor/input-masks/cleave.min.js"></script>
+<script src="/backend/vendor/input-masks/cleave-phone.js"></script>
+<script src="/backend/vendor/input-masks/cleave-custom.js"></script>
 
 <!-- Main Js Required -->
 <script src="/backend/js/main.js"></script>
