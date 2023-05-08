@@ -13,17 +13,16 @@
                     <div class="card-body">
 
                         <div class="row gutters">
-                            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                                 <div class="account-settings-block">
                                     <div class="settings-block">
 
                                         <div class="settings-block-body">
                                             <div class="pricing-chnage-plan">
                                                 @foreach($levels as $level)
-                                                    <a wire:click="showDescription('{{$level->id}}')"
-                                                       data-bs-toggle="modal" data-bs-target="#exampleModalSmall"
+                                                    <a
                                                        class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                                                       style="max-width: inherit;" href="#">
+                                                       style="max-width: inherit;" href="{{route('profile.kyc',$level->id)}}">
                                                         <h5>{{$level->title}}</h5>
                                                         <h6>{{$level->short_description}}</h6>
                                                     </a>
@@ -33,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12">
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row gutters">
                                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
                                         <img src="/backend/img/user1.png" class="img-fluid change-img-avatar"
@@ -72,11 +71,25 @@
                                     <button class="btn btn-primary mb-3">ذخیره اطلاعات</button>
                                 </div>
                             </div>
+                            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                                <div class="account-settings-block">
+
+                                    <div class="settings-block">
+                                        <div class="settings-block-title"><b>نکات مهم این سطح :</b></div>
+                                        <div class="settings-block-body">
+                                            <div class="list-group">
+                                                    <div>
+                                                        {{$levelInfo->long_description}}
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
