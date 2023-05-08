@@ -33,14 +33,35 @@
 
                                 <!-- Field wrapper start -->
                                 <div class="field-wrapper">
-                                    <textarea wire:model.defer="description"
-                                              name="description" id="description"
-                                              class="form-control  @error('description') error-input-border @enderror"
+                                    <textarea wire:model.defer="short_description"
+                                              name="short_description" id="short_description"
+                                              class="form-control  @error('short_description') error-input-border @enderror"
                                               rows="2">
 
                                     </textarea>
-                                    <div class="field-placeholder">Description <span class="text-danger">*</span></div>
-                                    @foreach($errors->get('description') as $message)
+                                    <div class="field-placeholder">Short_Description <span class="text-danger">*</span>
+                                    </div>
+                                    @foreach($errors->get('short_description') as $message)
+                                        <span wire:loading.remove
+                                              class="text-danger w-100 d-block mt-2">{{$message}}</span>
+                                    @endforeach
+                                </div>
+                                <!-- Field wrapper end -->
+
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                                <!-- Field wrapper start -->
+                                <div class="field-wrapper">
+                                    <textarea  wire:model.defer="long_description"
+                                              name="long_description" id="long_description"
+                                              class="form-control  @error('long_description') error-input-border @enderror"
+                                              rows="5">
+
+                                    </textarea>
+                                    <div class="field-placeholder">Long_Description <span class="text-danger">*</span>
+                                    </div>
+                                    @foreach($errors->get('long_description') as $message)
                                         <span wire:loading.remove
                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
                                     @endforeach
@@ -103,11 +124,15 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Description
+                                        style="width: 84.1016px;">short_description
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
                                         style="width: 84.1016px;">Icon
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
+                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
+                                        style="width: 84.1016px;">long_description
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Actions: activate to sort column ascending"
@@ -120,8 +145,9 @@
                                     <tr role="row" class="odd">
                                         <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $level->title }}</td>
-                                        <td>{{ $level->description }}</td>
+                                        <td>{{ $level->short_description }}</td>
                                         <td>{{ $level->icon }}</td>
+                                        <td>{{ $level->long_description }}</td>
                                         <td>
                                             <div class="actions">
                                                 <a wire:click="editLevel('{{$level->id}}')"
