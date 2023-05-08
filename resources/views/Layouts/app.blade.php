@@ -57,54 +57,38 @@
 </head>
 <body>
 
-<!-- Loading wrapper start -->
+
 <div id="loading-wrapper">
     <div class="spinner-border"></div>
     Loading...
 </div>
-<!-- Loading wrapper end -->
 
-<!-- Page wrapper start -->
+
+
 <div class="page-wrapper">
 
-    <!-- Sidebar wrapper start -->
-    <livewire:client.profile.menu/>
-    <!-- Sidebar wrapper end -->
 
-    <!-- *************
-        ************ Main container start *************
-    ************* -->
+    <livewire:client.profile.menu/>
+
+
     <div class="main-container">
 
-        <!-- Page header starts -->
 
-        <!-- Page header ends -->
         <livewire:client.profile.header/>
-        <!-- Content wrapper scroll start -->
 
         {{$slot}}
-        <!-- Content wrapper scroll end -->
+
 
     </div>
-    <!-- *************
-        ************ Main container end *************
-    ************* -->
+    <livewire:client.profile.modal/>
 
 </div>
-<!-- Page wrapper end -->
 
-<!-- *************
-    ************ Required JavaScript Files *************
-************* -->
 <!-- Required jQuery first, then Bootstrap Bundle JS -->
 <script src="/backend/js/jquery.min.js"></script>
 <script src="/backend/js/bootstrap.bundle.min.js"></script>
 <script src="/backend/js/modernizr.js"></script>
 <script src="/backend/js/moment.js"></script>
-
-<!-- *************
-    ************ Vendor Js Files *************
-************* -->
 
 <!-- Megamenu JS -->
 <script src="/backend/vendor/megamenu/js/megamenu.js"></script>

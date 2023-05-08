@@ -7,17 +7,17 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $long_description = '';
 
     public function showDescription($id)
     {
-        $this->long_description = UserLevel::query()->where('id', $id)->get();
+        $userLevel= UserLevel::query()->where('id', $id)->first();
+        $this->emit('showDescription',$userLevel);
     }
 
     public function render()
     {
-        $long_description = $this->long_description;
+
         $levels = UserLevel::all();
-        return view('livewire.client.profile.user-level.index', ['levels' => $levels, 'long_description' => $long_description])->layout('layouts.app');
+        return view('livewire.client.profile.user-level.index', ['levels' => $levels])->layout('layouts.app');
     }
 }

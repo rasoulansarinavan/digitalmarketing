@@ -1,4 +1,4 @@
-<div class="content-wrapper-scroll">
+<div class="content-wrapper-scroll" wire:ignore>
 
     <!-- Content wrapper start -->
     <div class="content-wrapper">
