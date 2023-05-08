@@ -11,7 +11,7 @@ class Index extends Component
 
     public function mount($level_id)
     {
-        $this->levelInfo = UserLevel::query()->where('id', $level_id)->first();
+        $this->levelInfo = UserLevel::query()->where('id', $level_id)->firstOrFail();
 
     }
 
