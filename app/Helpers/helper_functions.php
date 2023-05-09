@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Ghasedak\GhasedakApi;
 
 function activeCode($user_id)
 {
@@ -17,4 +18,16 @@ function activeCode($user_id)
 
     return $code;
 
+}
+
+function sendActiveCode()
+{
+    $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
+    $api->Verify(
+        "09904421184",  // receptor
+        1,              // 1 for text message and 2 for voice message
+        "smsVerification",  // name of the template which you've created in you account
+        "dawd",       // parameters (supporting up to 10 parameters)
+
+    );
 }

@@ -18,8 +18,10 @@ class Index extends Component
 
     public function submitLevel1($formData)
     {
+
+        sendActiveCode();
         //dd($formData);
-        ActiveCode(Auth::user()->id);
+       // ActiveCode(Auth::user()->id);
     }
 
     public function showDescription($id)
