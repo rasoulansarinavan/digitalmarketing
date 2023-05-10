@@ -32,6 +32,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.client.auth.index')->layout('layouts.app-auth-client');
+        return view('livewire.Client.auth.index')->layout('Layouts.app-auth-client');
     }
 }
