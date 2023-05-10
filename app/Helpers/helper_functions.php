@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\User;
-use Ghasedak\GhasedakApi;
 
 function activeCode($user_id)
 {
@@ -30,3 +29,4 @@ function sendActiveCode()
                // parameters (supporting up to 10 parameters)
     );
 }
+
