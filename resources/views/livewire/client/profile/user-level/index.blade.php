@@ -38,15 +38,32 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($userLevel < 1)
-                                <livewire:client.profile.user-level.level1/>
-                            @elseif($userLevel < 2)
-                                <livewire:client.profile.user-level.level2/>
-                            @elseif($userLevel <3)
-                                <livewire:client.profile.user-level.level3/>
-                            @elseif($userLevel < 4)
-                                <livewire:client.profile.user-level.level4/>
+
+                            @if($checkKyc)
+
+                                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                                    <div class="alert alert-warning" role="alert">
+                                        در حال بررسی . . .
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="/backend/img/pending.png" alt="" width="270">
+                                    </div>
+                                </div>
+
+                            @else
+
+                                @if($userLevel < 1)
+                                    <livewire:client.profile.user-level.level1/>
+                                @elseif($userLevel < 2)
+                                    <livewire:client.profile.user-level.level2/>
+                                @elseif($userLevel <3)
+                                    <livewire:client.profile.user-level.level3/>
+                                @elseif($userLevel < 4)
+                                    <livewire:client.profile.user-level.level4/>
+                                @endif
+
                             @endif
+
                             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                                 <div class="account-settings-block">
 
