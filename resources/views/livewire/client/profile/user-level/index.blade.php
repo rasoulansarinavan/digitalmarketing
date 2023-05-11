@@ -22,7 +22,7 @@
 
                                                 @foreach($levels as $level)
                                                     @php
-                                                        $href = route('profile.kyc', $userLevel);
+                                                        $href = route('profile.kyc', $userLevel+1);
                                                         $title='';
                                                     @endphp
 
@@ -38,7 +38,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             @if($userLevel < 1)
                                 <livewire:client.profile.user-level.level1/>
                             @elseif($userLevel < 2)
