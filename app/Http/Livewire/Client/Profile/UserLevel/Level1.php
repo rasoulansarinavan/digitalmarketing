@@ -78,6 +78,7 @@ class Level1 extends Component
         if ($this->code == $formData['code']) {
 
             $kyc->submitlevel1($this->formData);
+            return redirect()->back();
 
         } else {
             $this->invalidSmsCode = true;
