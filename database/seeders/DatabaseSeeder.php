@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserLevelsTableSeeder::class,
-            CategoriesTableSeeder::class
+            CategoriesTableSeeder::class,
+            StatusesTableSeeder::class
         ]);
+
     }
 }

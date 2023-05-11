@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Client\Profile\UserLevel;
 
+use App\Models\Kyc;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -12,14 +13,11 @@ class Level1 extends Component
 {
     use WithFileUploads;
 
-    public $invalidSmsCode = '', $code, $name = '', $code_melli = '', $birth_date = '', $mobile, $file, $verification_box = false;
+    public $formData = [], $invalidSmsCode = '', $code, $name = '', $code_melli = '', $birth_date = '', $mobile, $file, $verification_box = false;
 
     public function submitLevel1($formData, User $user)
     {
 
-
-//        sendActiveCode();
-        // ActiveCode(Auth::user()->id);
 
         $file = $this->file;
         $validator = Validator::make($formData, [
@@ -52,6 +50,7 @@ class Level1 extends Component
         $this->verification_box = true;
         $this->mobile = $formData['mobile'];
         $this->code = $code;
+        $this->formData = $formData;
 
 
         //$user->submitLevel1($formData, $file);
@@ -63,7 +62,7 @@ class Level1 extends Component
          $this->mobile = '';*/
     }
 
-    public function checkSmsCode($formData)
+    public function checkSmsCode($formData, Kyc $kyc)
     {
         $validator = Validator::make($formData, [
             'code' => 'required |min:4| max:6',
@@ -77,7 +76,9 @@ class Level1 extends Component
         $this->resetValidation();
 
         if ($this->code == $formData['code']) {
-            dd('ok');
+
+            $kyc->submitlevel1($this->formData);
+
         } else {
             $this->invalidSmsCode = true;
         }

@@ -37,14 +37,8 @@
 
             <div class="row gutters">
 
-                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
-                    <img src="{{\Illuminate\Support\Facades\Auth::user()->picture}}" style="border-radius: 50%"
-                         class="img-fluid change-img-avatar"
-                         alt="image">
-                </div>
-
-                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-12">
-                    <div id="dropzone-sm" class="mb-4">
+                <div class=" col-12">
+                    <div class="mb-4">
                         <div class="dz-message needsclick">
                             <label class="form-label" for="file">تصویر کارت ملی</label>
                             <input wire:model="file" name="file"
@@ -53,8 +47,12 @@
                                 <span wire:loading.remove
                                       class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
                             @endforeach
-                            <div wire:loading wire:target="image">Uploading...</div>
+                            <div wire:loading wire:target="file">Uploading...</div>
                         </div>
+                        @if ($file)
+                            Photo Preview:
+                            <img class="w-100" src="{{ $file->temporaryUrl() }}">
+                        @endif
                     </div>
                 </div>
 
