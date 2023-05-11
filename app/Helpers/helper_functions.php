@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Ghasedak\GhasedakApi;
 
 function activeCode($user_id)
 {
