@@ -8,7 +8,7 @@ function activeCode($user_id)
 
     //dd($code);
     do {
-        $randomCode = rand(1000, 1000000);
+        $randomCode = rand(1000, 100000);
         $code = \App\Models\ActiveCode::query()->create([
             'code' => $randomCode,
             'user_id' => $user_id,

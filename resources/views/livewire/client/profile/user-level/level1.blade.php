@@ -2,21 +2,26 @@
 
 
     @if($verification_box)
-        <form wire:submit.prevent="submitLevel1(Object.fromEntries(new FormData($event.target)))">
+        <form wire:submit.prevent="checkSmsCode(Object.fromEntries(new FormData($event.target)))">
 
             <div class="row gutters">
                 <div class="col-12">
 
-                    <div class="settings-block-title pb-3"><b>کد تایید ارسال شده به شماره : {{$mobile}} را وارد کنید </b>
+                    <div class="settings-block-title pb-3"><b>کد تایید ارسال شده به شماره : {{$mobile}} را وارد
+                            کنید </b>
                     </div>
                     <div class="field-wrapper">
 
                         <input name="code" class="form-control @error('name') error-input-border @enderror" id="code"
-                               placeholder="اینجا تایپ کنید" type="text">
+                               placeholder="اینجا تایپ کنید" type="text" maxlength="6">
                         @foreach ($errors->get('code') as $message)
                             <span wire:loading.remove
                                   class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
                         @endforeach
+                        @if($invalidSmsCode)
+                            <span wire:loading.remove
+                                  class=" text-danger w-100 d-block mt-2">کد نامعتبر است !</span>
+                        @endif
                         <div class="field-placeholder">کد تایید</div>
                     </div>
 

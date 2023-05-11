@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Client\Profile\UserLevel;
 
-use App\Models\ActiveCode;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -13,7 +12,7 @@ class Level1 extends Component
 {
     use WithFileUploads;
 
-    public $name = '', $code_melli = '', $birth_date = '', $mobile = '', $file, $verification_box = false;
+    public $invalidSmsCode = '', $code, $name = '', $code_melli = '', $birth_date = '', $mobile, $file, $verification_box = false;
 
     public function submitLevel1($formData, User $user)
     {
@@ -52,6 +51,7 @@ class Level1 extends Component
         sendActiveCode($code, $formData['mobile']);
         $this->verification_box = true;
         $this->mobile = $formData['mobile'];
+        $this->code = $code;
 
 
         //$user->submitLevel1($formData, $file);
@@ -61,6 +61,28 @@ class Level1 extends Component
          $this->code_melli = '';
          $this->birth_date = '';
          $this->mobile = '';*/
+    }
+
+    public function checkSmsCode($formData)
+    {
+        $validator = Validator::make($formData, [
+            'code' => 'required |min:4| max:6',
+        ], [
+            'code.required' => 'کد الزامی است!',
+            'code.max' => 'فرمت کد صحیح نیست!',
+            'code.min' => 'فرمت کد صحیح نیست!',
+        ]);
+
+        $validator->validate();
+        $this->resetValidation();
+
+        if ($this->code == $formData['code']) {
+            dd('ok');
+        } else {
+            $this->invalidSmsCode = true;
+        }
+
+
     }
 
 
