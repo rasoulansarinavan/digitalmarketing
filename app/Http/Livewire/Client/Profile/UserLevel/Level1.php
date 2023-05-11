@@ -13,7 +13,7 @@ class Level1 extends Component
 {
     use WithFileUploads;
 
-    public $name = '', $code_melli = '', $birth_date = '', $mobile = '', $file;
+    public $name = '', $code_melli = '', $birth_date = '', $mobile = '', $file, $verification_box = false;
 
     public function submitLevel1($formData, User $user)
     {
@@ -24,8 +24,8 @@ class Level1 extends Component
 
         $file = $this->file;
         $validator = Validator::make($formData, [
-            'file' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
-            'name' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+            // 'file' => 'image|mimes:jpg,jpeg,png|max:1024',
+            'name' => 'required | string | max: 30',
             'code_melli' => 'required | integer ',
             'birth_date' => 'required | max:10 | min:10',
             'mobile' => 'required | digits:11',
@@ -50,15 +50,17 @@ class Level1 extends Component
 
         $code = activeCode(Auth::user()->id);
         sendActiveCode($code, $formData['mobile']);
+        $this->verification_box = true;
+        $this->mobile = $formData['mobile'];
 
 
-        $user->submitLevel1($formData, $file);
+        //$user->submitLevel1($formData, $file);
 
-        $this->file = '';
-        $this->name = '';
-        $this->code_melli = '';
-        $this->birth_date = '';
-        $this->mobile = '';
+        /* $this->file = '';
+         $this->name = '';
+         $this->code_melli = '';
+         $this->birth_date = '';
+         $this->mobile = '';*/
     }
 
 
