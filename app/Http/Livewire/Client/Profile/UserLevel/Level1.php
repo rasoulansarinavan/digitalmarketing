@@ -16,6 +16,7 @@ class Level1 extends Component
     public function submitLevel1($formData, User $user)
     {
 
+
 //        sendActiveCode();
         // ActiveCode(Auth::user()->id);
 

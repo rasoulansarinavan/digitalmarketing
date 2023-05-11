@@ -10,6 +10,7 @@ class Level2 extends Component
 {
     public $bank_card = '', $shaba = '';
 
+
     public function submitLevel2($formData, User $user)
     {
 //        sendActiveCode();

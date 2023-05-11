@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 
 class Index extends Component
 {
+
     use WithFileUploads;
 
 //    public $file, $name, $code_melli = '', $birth_date = '', $mobile = '';
