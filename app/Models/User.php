@@ -25,16 +25,17 @@ class User extends Authenticatable
 
     protected $guarded = [];
 
-    public function saveUser($formData, $user_id, $image)
+    public function submitLevel1($formData, $image)
     {
-        DB::transaction(function () use ($image, $user_id, $formData) {
+        $user_level_id=\Illuminate\Support\Facades\Auth::user()->user_level_id;
+        DB::transaction(function () use ($image, $user_level_id, $formData) {
             $image_name = '';
             if ($image) {
                 $extension = $image->extension();
                 $image_name = 'user_' . str::random(10) . time() . '.' . $extension;
-                if ($user_id != 0) {
+                if ($user_level_id != 0) {
                     $userFileName = File::query()->where([
-                        'product_id' => $user_id,
+                        'product_id' => $user_level_id,
                         'type' => 'user',
                     ])->pluck('file')->first();
                     unlink('images/users/' . $userFileName);
@@ -42,31 +43,31 @@ class User extends Authenticatable
                 Image::make($image)->crop('300', '300')->save(public_path('images/users/' . $image_name));
             }
 
-            $user = $this->insertToUserTable($user_id, $formData);
+            $user = $this->insertToUserTable($user_level_id, $formData);
             if ($image) {
                 $this->insertToFileTable($user->id, $image_name);
             }
         });
     }
 
-    public function insertToUserTable($user_id, $formData)
-    {
-        return User::query()->updateOrCreate(
-            [
-                'id' => $user_id
-            ],
-            [
-                'code_melli' => $formData['code_melli'],
-                'birth_date' => $formData['birth_date']
-            ]
-        );
-    }
+//    public function insertToUserTable($user_level_id, $formData)
+//    {
+//        return User::query()->updateOrCreate(
+//            [
+//                'id' => $user_level_id
+//            ],
+//            [
+//                'code_melli' => $formData['code_melli'],
+//                'birth_date' => $formData['birth_date']
+//            ]
+//        );
+//    }
 
-    public function insertToFileTable($user_id, $image_name)
+    public function insertToFileTable($user_level_id, $image_name)
     {
         File::query()->updateOrCreate(
             [
-                'product_id' => $user_id,
+                'product_id' => $user_level_id,
                 'type' => 'user'
             ],
             [
