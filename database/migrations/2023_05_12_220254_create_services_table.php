@@ -12,10 +12,11 @@ return new class extends Migration {
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->text('description');
             $table->text('long_description')->nullable();
-            $table->text('slug')->nullable();
+            $table->text('discount')->default(0);
+            $table->text('slug')->unique()->nullable();
             $table->timestamps();
         });
     }

@@ -46,6 +46,25 @@
     <link rel="stylesheet" href="/persian-fonts/fontiran.css">
     <link rel="stylesheet" href="/persian-fonts/style.css">
     <link rel="stylesheet" href="/backend/css/toastr.min.css">
+
+    <!-- Steps Wizard CSS -->
+    <link rel="stylesheet" href="/backend/dark/vendor/wizard/jquery.steps.css" />
+
+    <!-- Summernote CSS -->
+    <link rel="stylesheet" href="/backend/dark/vendor/summernote/summernote-bs4.css" />
+
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet" href="/backend/dark/vendor/bs-select/bs-select.css" />
+
+    <!-- Uploader CSS -->
+    <link rel="stylesheet" href="/backend/dark/vendor/dropzone/dropzone.min.css" />
+
+    <!-- Input Tags css -->
+    <link rel="stylesheet" href="/backend/dark/vendor/input-tags/tagsinput.css" />
+
+    <!-- Plugins Customization RTL -->
+    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">
+
     @livewireStyles
 
 </head>
@@ -210,6 +229,7 @@
     })
 </script>
 
+@stack('script')
 
 @livewireScripts
 </body>
