@@ -42,25 +42,25 @@
     <link rel="stylesheet" href="/backend/dark/vendor/daterange/daterange.css">
 
     <!-- Plugins Customization RTL -->
-{{--    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">--}}
+    {{--    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">--}}
     <link rel="stylesheet" href="/persian-fonts/fontiran.css">
     <link rel="stylesheet" href="/persian-fonts/style.css">
     <link rel="stylesheet" href="/backend/css/toastr.min.css">
 
     <!-- Steps Wizard CSS -->
-    <link rel="stylesheet" href="/backend/dark/vendor/wizard/jquery.steps.css" />
+    <link rel="stylesheet" href="/backend/dark/vendor/wizard/jquery.steps.css"/>
 
     <!-- Summernote CSS -->
-    <link rel="stylesheet" href="/backend/dark/vendor/summernote/summernote-bs4.css" />
+    <link rel="stylesheet" href="/backend/dark/vendor/summernote/summernote-bs4.css"/>
 
     <!-- Bootstrap Select CSS -->
-    <link rel="stylesheet" href="/backend/dark/vendor/bs-select/bs-select.css" />
+    <link rel="stylesheet" href="/backend/dark/vendor/bs-select/bs-select.css"/>
 
     <!-- Uploader CSS -->
-    <link rel="stylesheet" href="/backend/dark/vendor/dropzone/dropzone.min.css" />
+    <link rel="stylesheet" href="/backend/dark/vendor/dropzone/dropzone.min.css"/>
 
     <!-- Input Tags css -->
-    <link rel="stylesheet" href="/backend/dark/vendor/input-tags/tagsinput.css" />
+    <link rel="stylesheet" href="/backend/dark/vendor/input-tags/tagsinput.css"/>
 
     <!-- Plugins Customization RTL -->
     <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">
@@ -75,38 +75,23 @@
     <div class="spinner-border"></div>
     Loading...
 </div>
-<!-- Loading wrapper end -->
 
-<!-- Page wrapper start -->
 <div class="page-wrapper">
 
-    <!-- Sidebar wrapper start -->
-    <livewire:admin.menu/>
-    <!-- Sidebar wrapper end -->
 
-    <!-- *************
-        ************ Main container start *************
-    ************* -->
+    <livewire:admin.menu/>
+
     <div class="main-container">
 
-        <!-- Page header starts -->
         <livewire:admin.header/>
-        <!-- Page header ends -->
 
-        <!-- Content wrapper scroll start -->
         <div class="content-wrapper-scroll">
 
-            <!-- Content wrapper start -->
             {{$slot}}
-            <!-- Content wrapper end -->
 
         </div>
-        <!-- Content wrapper scroll end -->
 
     </div>
-    <!-- *************
-        ************ Main container end *************
-    ************* -->
 
 </div>
 <!-- Page wrapper end -->
