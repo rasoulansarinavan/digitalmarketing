@@ -22,6 +22,7 @@ Route::group(['prefix' => 'profile', /*'middleware' => 'auth:web'*/], function (
     Route::name('profile.')->group(function () {
         Route::get('/dashboard', index::class)->name('dashboard');
         Route::get('/kyc/{level_id}', \App\Http\Livewire\Client\Profile\UserLevel\Index::class)->name('kyc');
+        Route::get('/service/{id}', \App\Http\Livewire\Client\Profile\Service\Index::class)->name('service');
     });
 });
 
