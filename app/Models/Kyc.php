@@ -23,13 +23,13 @@ class Kyc extends Model
         //TODO save id card
 
         DB::transaction(function () use ($file, $formData) {
-            $user_id=Auth::user()->id;
+            $user_id = Auth::user()->id;
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/'.$user_id.'cards/' . $image_name;
+            $path = '/images/' . $user_id . 'cards/' . $image_name;
             Image::make($file)->save(public_path('images/cards/' . $image_name), 40);
 
-            $file_id = $this->insertToFileTable($path);
+            $file_id = $this->insertImageToFileTable(1, $path);
 
             $formData['file'] = $file_id->toArray();
 
@@ -42,21 +42,10 @@ class Kyc extends Model
                 ]
             );
         });
+
         User::query()->where('id', Auth::user()->id)->update(['mobile' => $formData['mobile']]);
     }
 
-    public function insertToFileTable($path)
-    {
-        return File::query()->updateOrCreate(
-            [
-                'user_id' => Auth::user()->id,
-                'type' => 'kyc-1',
-            ],
-            [
-                'file' => $path
-            ]
-        );
-    }
 
     public function submitLevel2($formData)
     {
@@ -75,13 +64,14 @@ class Kyc extends Model
         //TODO save id card
 
         DB::transaction(function () use ($file, $formData) {
-            $user=Auth::user();
+            $user = Auth::user();
             $extension = $file->extension();
             $image_name = 'image_selfie_' . $user->name . '_' . $user->mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/'.$user->id.'/selfie/' . $image_name;
+            $path = '/images/' . $user->id . '/selfie/' . $image_name;
             Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
 
-            $file_id = $this->insertToFileSelfieTable13($path);
+            $file_id = $this->insertImageToFileTable(3, $path);
+
             $formData['file'] = $file_id->toArray();
 
             Kyc::query()->updateOrCreate(
@@ -95,16 +85,17 @@ class Kyc extends Model
         });
     }
 
-    public function insertToFileSelfieTable13($path)
+    public function insertImageToFileTable($levelId, $path)
     {
         return File::query()->updateOrCreate(
             [
                 'user_id' => Auth::user()->id,
-                'type' => 'kyc-3',
+                'type' => 'kyc-' . $levelId,
             ],
             [
                 'file' => $path
             ]
         );
+
     }
 }
