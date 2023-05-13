@@ -78,9 +78,10 @@ class Kyc extends Model
             $mobile = Auth::user()->mobile;
             $extension = $file->extension();
             $image_name = 'image_selfie_' . $name . '_' . $mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
+            $path = '/images/selfie/' . $image_name;
             Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
 
-            $file_id = $this->insertToFileSelfieTable11($image_name);
+            $file_id = $this->insertToFileSelfieTable11($path);
             $formData['file'] = $file_id->toArray();
 
             Kyc::query()->updateOrCreate(
@@ -94,16 +95,16 @@ class Kyc extends Model
         });
     }
 
-    public function insertToFileSelfieTable11($image_name)
+    public function insertToFileSelfieTable11($path)
     {
         return File::query()->updateOrCreate(
             [
                 'user_id' => Auth::user()->id,
-                'file' => $image_name
+                'file' => $path
             ],
             [
                 'type' => 'kyc',
-                'file' => $image_name,
+                'file' => $path,
             ]
         );
     }
