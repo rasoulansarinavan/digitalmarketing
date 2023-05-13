@@ -22,7 +22,7 @@ Route::group(['prefix' => 'profile', /*'middleware' => 'auth:web'*/], function (
     Route::name('profile.')->group(function () {
         Route::get('/dashboard', index::class)->name('dashboard');
         Route::get('/kyc/{level_id}', \App\Http\Livewire\Client\Profile\UserLevel\Index::class)->name('kyc');
-//        Route::get('/service/{id}', \App\Http\Livewire\Client\Profile\Service\Index::class)->name('service');
+        Route::get('/service/{id}', \App\Http\Livewire\Client\Profile\Service\Index::class)->name('service');
     });
 });
 
@@ -37,7 +37,7 @@ Route::group(['prefix' => 'admin', 'name' => 'admin.',/* 'middleware' =>'auth:ad
     Route::get('/role', \App\Http\Livewire\Admin\Role\Index::class)->name('role');
     Route::get('/category', \App\Http\Livewire\Admin\Category\Index::class)->name('category');
     Route::get('/userLevels', \App\Http\Livewire\Admin\UserLevel\Index::class)->name('userLevels');
-//    Route::get('/service/create', \App\Http\Livewire\Admin\Services\Create::class)->name('service.create');
+    Route::get('/service/create', \App\Http\Livewire\Admin\Services\Create::class)->name('service.create');
 
 });
 

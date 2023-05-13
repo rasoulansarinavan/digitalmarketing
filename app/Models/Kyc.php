@@ -26,7 +26,7 @@ class Kyc extends Model
             $user_id = Auth::user()->id;
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/' . $user_id . 'cards/' . $image_name;
+            $path = '/images/' . $user_id . '/cards/' . $image_name;
             Image::make($file)->save(public_path('images/cards/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(1, $path);
