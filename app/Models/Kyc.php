@@ -23,9 +23,10 @@ class Kyc extends Model
         //TODO save id card
 
         DB::transaction(function () use ($file, $formData) {
+            $user_id=Auth::user()->id;
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/cards/' . $image_name;
+            $path = '/images/'.$user_id.'cards/' . $image_name;
             Image::make($file)->save(public_path('images/cards/' . $image_name), 40);
 
             $file_id = $this->insertToFileTable($path);
@@ -34,7 +35,7 @@ class Kyc extends Model
 
             Kyc::query()->updateOrCreate(
                 [
-                    'user_id' => Auth::user()->id,
+                    'user_id' => $user_id,
                     'user_level_id' => 1,
                 ], [
                     'data' => json_encode($formData)
@@ -74,11 +75,10 @@ class Kyc extends Model
         //TODO save id card
 
         DB::transaction(function () use ($file, $formData) {
-            $name = Auth::user()->name;
-            $mobile = Auth::user()->mobile;
+            $user=Auth::user();
             $extension = $file->extension();
-            $image_name = 'image_selfie_' . $name . '_' . $mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/selfie/' . $image_name;
+            $image_name = 'image_selfie_' . $user->name . '_' . $user->mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
+            $path = '/images/'.$user->id.'/selfie/' . $image_name;
             Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
 
             $file_id = $this->insertToFileSelfieTable11($path);
