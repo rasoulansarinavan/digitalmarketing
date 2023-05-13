@@ -15,13 +15,13 @@ class Level1 extends Component
 
     public $formData = [], $invalidSmsCode = '', $code, $name = '', $code_melli = '', $birth_date = '', $mobile, $file, $verification_box = false;
 
-    public function submitLevel1($formData, User $user)
+    public function submitLevel1($formData, Kyc $user)
     {
 
 
         $file = $this->file;
         $validator = Validator::make($formData, [
-            // 'file' => 'image|mimes:jpg,jpeg,png|max:1024',
+            'file' => '',
             'name' => 'required | string | max: 30',
             'code_melli' => 'required | integer ',
             'birth_date' => 'required | max:10 | min:10',
@@ -40,26 +40,19 @@ class Level1 extends Component
             'mobile.required' => 'موبایل الزامی است!',
             'mobile.digits' => 'شماره موبایل باید 11 رفم باشد!',
         ]);
-//        dd($this->file);
+
         $validator->validate();
         $this->resetValidation();
+        $user->submitLevel1($formData, $file);
 
-
-        $code = activeCode(Auth::user()->id);
-        sendActiveCode($code, $formData['mobile']);
-        $this->verification_box = true;
-        $this->mobile = $formData['mobile'];
-        $this->code = $code;
+//        $code = activeCode(Auth::user()->id);
+//        sendActiveCode($code, $formData['mobile']);
+//        $this->verification_box = true;
+//        $this->mobile = $formData['mobile'];
+//        $this->code = $code;
         $this->formData = $formData;
 
 
-        //$user->submitLevel1($formData, $file);
-
-        /* $this->file = '';
-         $this->name = '';
-         $this->code_melli = '';
-         $this->birth_date = '';
-         $this->mobile = '';*/
     }
 
     public function checkSmsCode($formData, Kyc $kyc)

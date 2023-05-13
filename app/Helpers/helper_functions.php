@@ -26,7 +26,7 @@ function sendActiveCode($code,$userMobile)
     $api = new GhasedakApi(env('GHASEDAKAPI_KEY'));
     $api->Verify(
         "$userMobile",  // receptor
-        'smsVerification',              // 1 for text message and 2 for voice message
+        'smsVerification', // 1 for text message and 2 for voice message
         "$code",  // name of the template which you've created in you account
                // parameters (supporting up to 10 parameters)
     );

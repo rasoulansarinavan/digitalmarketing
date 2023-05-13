@@ -17,9 +17,9 @@
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                 <!-- Field wrapper start -->
                 <div class="field-wrapper">
-                    <input type="text" class="form-control @error('shaba') error-input-border @enderror" name="shaba" placeholder="اینجا تایپ کنید">
+                    <input type="text" class="form-control @error('sheba') error-input-border @enderror" name="sheba" placeholder="اینجا تایپ کنید">
                     <div class="field-placeholder">شماره شبا</div>
-                    @foreach ($errors->get('shaba') as $message)
+                    @foreach ($errors->get('sheba') as $message)
                         <span wire:loading.remove
                               class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
                     @endforeach

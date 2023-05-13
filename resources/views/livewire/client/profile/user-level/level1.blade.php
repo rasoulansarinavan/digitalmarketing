@@ -50,7 +50,6 @@
                             <div wire:loading wire:target="file">Uploading...</div>
                         </div>
                         @if ($file)
-                            Photo Preview:
                             <img class="w-100" src="{{ $file->temporaryUrl() }}">
                         @endif
                     </div>
