@@ -50,10 +50,10 @@ class Kyc extends Model
         return File::query()->updateOrCreate(
             [
                 'user_id' => Auth::user()->id,
-                'type' => 'kyc'
+                'type' => 'kyc-1',
             ],
             [
-                'file' => $path,
+                'file' => $path
             ]
         );
     }
@@ -81,7 +81,7 @@ class Kyc extends Model
             $path = '/images/'.$user->id.'/selfie/' . $image_name;
             Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
 
-            $file_id = $this->insertToFileSelfieTable11($path);
+            $file_id = $this->insertToFileSelfieTable13($path);
             $formData['file'] = $file_id->toArray();
 
             Kyc::query()->updateOrCreate(
@@ -95,16 +95,15 @@ class Kyc extends Model
         });
     }
 
-    public function insertToFileSelfieTable11($path)
+    public function insertToFileSelfieTable13($path)
     {
         return File::query()->updateOrCreate(
             [
                 'user_id' => Auth::user()->id,
-                'file' => $path
+                'type' => 'kyc-3',
             ],
             [
-                'type' => 'kyc',
-                'file' => $path,
+                'file' => $path
             ]
         );
     }
