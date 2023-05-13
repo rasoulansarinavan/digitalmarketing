@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Client\Profile\UserLevel;
 
+use App\Models\Kyc;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,17 +13,15 @@ class Level3 extends Component
 {
     use WithFileUploads;
 
-    public $file, $serial;
+    public $formData = [], $mobile, $file, $serial, $invalidSmsCode = '', $code, $verification_box = false;
 
-    public function submitLevel3($formData, User $user)
+    public function submitLevel3($formData, Kyc $user)
     {
-        //        sendActiveCode();
-        // ActiveCode(Auth::user()->id);
 
         $file = $this->file;
         $validator = Validator::make($formData, [
-            'file' => 'image|mimes:jpg,jpeg,png,gif|max:1024',
-            'serial' => 'required | regex:/^[ا-یa-zA-Z0-9@$#^%&*!]+$/u',
+            'file' => '',
+            'serial' => 'required',
         ], [
             'file.required' => 'تصویر الزامی است!',
             'file.image' => '.فایل باید یک تصویر باشد',
@@ -31,14 +31,45 @@ class Level3 extends Component
         ]);
 
 
+
+
         $validator->validate();
         $this->resetValidation();
         $user->submitLevel3($formData, $file);
 
-        $this->file = '';
-        $this->serial = '';
+//                $user_id = Auth::user()->id;
+//
+//        $code = activeCode($user_id);
+//        $userInfo = User::query()->where('id',$user_id)->first('mobile');
+//        sendActiveCode($code, $userInfo);
+//        $this->verification_box = true;
+//        $this->mobile = $userInfo['mobile'];
+//        $this->code = $code;
     }
+    public function checkSmsCode($formData, Kyc $kyc)
+    {
+        $validator = Validator::make($formData, [
+            'code' => 'required |min:4| max:6',
+        ], [
+            'code.required' => 'کد الزامی است!',
+            'code.max' => 'فرمت کد صحیح نیست!',
+            'code.min' => 'فرمت کد صحیح نیست!',
+        ]);
 
+        $validator->validate();
+        $this->resetValidation();
+
+        if ($this->code == $formData['code']) {
+
+            $kyc->submitlevel1($this->formData);
+            return redirect()->back();
+
+        } else {
+            $this->invalidSmsCode = true;
+        }
+
+
+    }
 
     public function render()
     {

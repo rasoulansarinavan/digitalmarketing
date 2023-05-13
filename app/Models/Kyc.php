@@ -54,4 +54,55 @@ class Kyc extends Model
             ]
         );
     }
+
+    public function submitLevel2($formData)
+    {
+        Kyc::query()->updateOrCreate(
+            [
+                'user_id' => Auth::user()->id,
+                'user_level_id' => 2,
+            ], [
+                'data' => json_encode($formData)
+            ]
+        );
+    }
+
+    public function submitLevel3($formData, $file)
+    {
+        //TODO save id card
+
+        DB::transaction(function () use ($file, $formData) {
+            $name=Auth::user()->name;
+            $mobile=Auth::user()->mobile;
+            $extension = $file->extension();
+            $image_name = 'image_selfie_' . $name . '_' . $mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
+            Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
+
+            $file_id = $this->insertToFileSelfieTable11($image_name);
+            $formData['file'] = $file_id->toArray();
+
+            Kyc::query()->updateOrCreate(
+                [
+                    'user_id' => Auth::user()->id,
+                    'user_level_id' => 3,
+                ], [
+                    'data' => json_encode($formData)
+                ]
+            );
+        });
+    }
+
+    public function insertToFileSelfieTable11($image_name)
+    {
+        return File::query()->updateOrCreate(
+            [
+                'user_id' => Auth::user()->id,
+                'file'=>$image_name
+            ],
+            [
+                'type' => 'kyc',
+                'file' => $image_name,
+            ]
+        );
+    }
 }
