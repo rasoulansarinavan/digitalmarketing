@@ -25,9 +25,11 @@ class Kyc extends Model
         DB::transaction(function () use ($file, $formData) {
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
+            $path = '/images/cards/' . $image_name;
             Image::make($file)->save(public_path('images/cards/' . $image_name), 40);
 
-            $file_id = $this->insertToFileTable($image_name);
+            $file_id = $this->insertToFileTable($path);
+
             $formData['file'] = $file_id->toArray();
 
             Kyc::query()->updateOrCreate(
@@ -42,7 +44,7 @@ class Kyc extends Model
         User::query()->where('id', Auth::user()->id)->update(['mobile' => $formData['mobile']]);
     }
 
-    public function insertToFileTable($image_name)
+    public function insertToFileTable($path)
     {
         return File::query()->updateOrCreate(
             [
@@ -50,7 +52,7 @@ class Kyc extends Model
                 'type' => 'kyc'
             ],
             [
-                'file' => $image_name,
+                'file' => $path,
             ]
         );
     }
@@ -72,8 +74,8 @@ class Kyc extends Model
         //TODO save id card
 
         DB::transaction(function () use ($file, $formData) {
-            $name=Auth::user()->name;
-            $mobile=Auth::user()->mobile;
+            $name = Auth::user()->name;
+            $mobile = Auth::user()->mobile;
             $extension = $file->extension();
             $image_name = 'image_selfie_' . $name . '_' . $mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
             Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
@@ -97,7 +99,7 @@ class Kyc extends Model
         return File::query()->updateOrCreate(
             [
                 'user_id' => Auth::user()->id,
-                'file'=>$image_name
+                'file' => $image_name
             ],
             [
                 'type' => 'kyc',
