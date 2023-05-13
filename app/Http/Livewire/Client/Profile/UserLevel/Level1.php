@@ -17,11 +17,10 @@ class Level1 extends Component
 
     public function submitLevel1($formData, Kyc $user)
     {
+        $formData['file'] = $this->file;
 
-
-        $file = $this->file;
         $validator = Validator::make($formData, [
-            'file' => '',
+            'file' => 'required|image|mimes:jpg,jpeg,png|max:1024',
             'name' => 'required | string | max: 30',
             'code_melli' => 'required | integer ',
             'birth_date' => 'required | max:10 | min:10',
@@ -43,14 +42,14 @@ class Level1 extends Component
 
         $validator->validate();
         $this->resetValidation();
-        $user->submitLevel1($formData, $file);
+        $user->submitLevel1($formData, $this->file);
 
 //        $code = activeCode(Auth::user()->id);
 //        sendActiveCode($code, $formData['mobile']);
 //        $this->verification_box = true;
 //        $this->mobile = $formData['mobile'];
 //        $this->code = $code;
-        $this->formData = $formData;
+//        $this->formData = $formData;
 
 
     }
@@ -79,7 +78,6 @@ class Level1 extends Component
 
 
     }
-
 
 
     public function render()

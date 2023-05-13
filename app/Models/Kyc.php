@@ -42,7 +42,6 @@ class Kyc extends Model
                 ]
             );
         });
-
         User::query()->where('id', Auth::user()->id)->update(['mobile' => $formData['mobile']]);
     }
 
