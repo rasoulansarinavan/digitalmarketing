@@ -13,12 +13,18 @@ use Spatie\Permission\Models\Role;
 class Index extends Component
 {
 
-    public $dataUser = [];
+    public $dataUser;
 
-    public function showDataModal($id)
+    public function showDataModal($userId,$levelId)
     {
-        $data = Kyc::query()->where('user_id', $id)->first('data');
-        $this->dataUser = json_decode($data, true);
+
+        $data = Kyc::query()->where([
+            'user_id'=>$userId,
+            'user_level_id'=>$levelId,
+        ])->pluck('data')->first();
+        $this->dataUser = unserialize($data);
+
+//dd($this->dataUser);
     }
 
     public function render()

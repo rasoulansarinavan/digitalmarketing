@@ -110,7 +110,7 @@
                                         <td>
                                             @forelse($kycies as $kyc)
 
-                                                <span wire:click="showDataModal({{$user->id}})"
+                                                <span wire:click="showDataModal({{$user->id}},{{$loop->index+1}})"
                                                       class="btn btn-primary badge bg-primary"
                                                       data-bs-toggle="modal"
                                                       data-bs-target="#exampleModalCenteredScrollable">
@@ -153,19 +153,33 @@
         </div>
     </div>
 
-    <div wire:ignore class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1"
+    <div wire:ignore.self class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1"
          aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
-        <div wire:ignore class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div wire:ignore class="modal-content">
-                <div wire:ignore class="modal-header">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">{{$user->name}}_KYC</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
                     <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
-                        @foreach($dataUser as $user)
-                            {{dd($user)}}
-                        @endforeach
+
+
+                        <span>{{@$dataUser['file']['file']}}</span>
+                        <span>{{@$dataUser['name']}}</span>
+                        {{--   <span>{{$dataUser['file']}}</span>
+                           <span>{{$dataUser['name']}}</span>--}}
+                        {{--  @foreach(json_decode($dataUser) as $row)
+                              dwad
+                             @endforeach--}}
+                        {{-- @json($dataUser)
+                         @foreach($dataUser as $value)
+                             Member ID: {{ $value }}
+                         @endforeach--}}
+                        {{--          {{$dataUser}}--}}
+                        {{--@foreach($dataUser as $user)
+                        {{$user->}}
+                        @endforeach--}}
                     </div>
                     <div class="slimScrollBar"
                          style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
@@ -174,7 +188,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button  type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ class Kyc extends Model
                     'user_id' => $user_id,
                     'user_level_id' => 1,
                 ], [
-                    'data' => json_encode($formData)
+                    'data' => serialize($formData)
                 ]
             );
         });
