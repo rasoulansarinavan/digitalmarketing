@@ -165,8 +165,9 @@
                     <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
 
 
-                        <span>{{@$dataUser['file']['file']}}</span>
+                        <span><img src="{{@$dataUser['file']['file']}}" alt=""></span>
                         <span>{{@$dataUser['name']}}</span>
+                        <span>mobile:{{@$dataUser['mobile']}}</span>
                     </div>
                     <div class="slimScrollBar"
                          style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>

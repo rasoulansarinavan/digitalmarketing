@@ -22,9 +22,9 @@ class Index extends Component
             'user_id'=>$userId,
             'user_level_id'=>$levelId,
         ])->pluck('data')->first();
-        $this->dataUser = unserialize($data);
+        $this->dataUser = unserialize($data);/*
 
-//dd($this->dataUser);
+dd($this->dataUser);*/
     }
 
     public function render()
