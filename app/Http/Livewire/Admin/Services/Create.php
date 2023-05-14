@@ -11,7 +11,7 @@ class Create extends Component
 
     public function submitGeneralInformation($formData)
     {
-        dd($formData);
+//        dd($formData);
 
     }
     public function mount()

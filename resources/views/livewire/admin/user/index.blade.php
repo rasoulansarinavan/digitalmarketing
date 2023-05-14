@@ -1,6 +1,4 @@
 <div class="content-wrapper">
-
-    <!-- Row start -->
     <div class="row gutters">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
 
@@ -112,7 +110,10 @@
                                         <td>
                                             @forelse($kycies as $kyc)
 
-                                                <span  class="badge bg-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+                                                <span wire:click="showDataModal({{$user->id}})"
+                                                      class="btn btn-primary badge bg-primary"
+                                                      data-bs-toggle="modal"
+                                                      data-bs-target="#exampleModalCenteredScrollable">
                                                     KYC-{{$loop->index+1}}
                                                 </span>
 
@@ -122,7 +123,6 @@
                                             @endforelse
                                         </td>
 
-                                        <!-- Field wrapper end -->
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -147,12 +147,37 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
         </div>
     </div>
-    <!-- Row end -->
 
+    <div wire:ignore class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1"
+         aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+        <div wire:ignore class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div wire:ignore class="modal-content">
+                <div wire:ignore class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">{{$user->name}}_KYC</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                    <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+                        @foreach($dataUser as $user)
+                            {{dd($user)}}
+                        @endforeach
+                    </div>
+                    <div class="slimScrollBar"
+                         style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
+                    <div class="slimScrollRail"
+                         style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button  type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
