@@ -59,7 +59,8 @@
                                 @elseif($userLevel <3)
                                     <livewire:client.profile.user-level.level3/>
                                 @elseif($userLevel < 4)
-                                    <livewire:client.profile.user-level.level4/>
+                                    {{--<livewire:client.profile.user-level.level4/>--}}
+                                    <livewire:client.profile.user-level.completed/>
                                 @endif
 
                             @endif
