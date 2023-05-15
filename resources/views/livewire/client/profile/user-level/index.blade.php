@@ -24,13 +24,27 @@
                                                     @php
                                                         $href = route('profile.kyc', $userLevel+1);
                                                         $title='';
+                                                        $background='';
+                                                        $color='';
+                                                        //dd($level->userLevel->status_id);
+                                                        if (@$level->userLevel->status_id==1){
+                                                            $background='#d69e00';
+                                                            $color='#fff';
+                                                        }elseif (@$level->userLevel->status_id==2){
+                                                             $background='#0d8d29';
+                                                             $color='#fff';
+                                                        }elseif (@$level->userLevel->status_id==3){
+                                                             $background='#e02539';
+                                                             $color='#fff';
+                                                        }
                                                     @endphp
 
                                                     <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
-                                                       style="max-width: inherit;"
+                                                       style="max-width: inherit; background: {{$background}};color:{{$color}} "
                                                        href="{{$href}}">
-                                                        <h5>{{$level->title}}</h5>
-                                                        <h6>{{$level->short_description}}</h6>
+                                                        {{$title}}
+                                                        <h5 style="color: {{$color}}">{{$level->title}}</h5>
+                                                        <h6 style="color: {{$color}}">{{$level->short_description}}</h6>
                                                     </a>
                                                 @endforeach
                                             </div>

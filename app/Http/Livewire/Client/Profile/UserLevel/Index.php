@@ -25,6 +25,7 @@ class Index extends Component
         if ($checkKyc) {
             $this->checkKyc = true;
         }
+
         $this->levelInfo = UserLevel::query()->where('id', $level_id)->firstOrFail();
     }
 
@@ -38,7 +39,8 @@ class Index extends Component
 
     public function render()
     {
-        $levels = UserLevel::all();
+        $levels = UserLevel::with('userLevel')->get();
+      /*  dd($levels);*/
         return view('livewire.client.profile.user-level.index', ['levels' => $levels])->layout('layouts.app');
     }
 }

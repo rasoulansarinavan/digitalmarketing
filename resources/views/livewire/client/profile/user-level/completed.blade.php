@@ -3,6 +3,6 @@
         احراز هویت کامل شده است و هیج محدودتی برای شما وجود ندارد !
     </div>
     <div class="text-center">
-        <img  src="/backend/img/completed.png" alt="" class="w-100 p-4" >
+        <img  src="/backend/img/completed.png" alt="" class="w-100 p-5" >
     </div>
 </div>

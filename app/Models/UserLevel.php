@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class UserLevel extends Model
 {
@@ -24,6 +25,12 @@ class UserLevel extends Model
                 'icon' => $formData['icon']
             ]
         );
+    }
+
+    public function userLevel()
+    {
+        return $this->belongsTo(Kyc::class, 'id', 'user_level_id')->where('user_id', Auth::user()->id);
+
     }
 
 }
