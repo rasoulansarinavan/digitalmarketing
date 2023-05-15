@@ -23,27 +23,30 @@
                                                 @foreach($levels as $level)
                                                     @php
                                                         $href = route('profile.kyc', $userLevel+1);
-                                                        $title='';
+                                                        $badge='';
                                                         $background='';
                                                         $color='';
                                                         //dd($level->userLevel->status_id);
                                                         if (@$level->userLevel->status_id==1){
                                                             $background='#d69e00';
                                                             $color='#fff';
+                                                            $badge='('.$level->userLevel->statusName->title.')';
                                                         }elseif (@$level->userLevel->status_id==2){
                                                              $background='#0d8d29';
                                                              $color='#fff';
+                                                             $badge='('.$level->userLevel->statusName->title.')';
                                                         }elseif (@$level->userLevel->status_id==3){
                                                              $background='#e02539';
                                                              $color='#fff';
+                                                             $badge='('.$level->userLevel->statusName->title.')';
                                                         }
                                                     @endphp
 
                                                     <a class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
                                                        style="max-width: inherit; background: {{$background}};color:{{$color}} "
                                                        href="{{$href}}">
-                                                        {{$title}}
-                                                        <h5 style="color: {{$color}}">{{$level->title}}</h5>
+
+                                                        <h5 style="color: {{$color}}">{{$level->title}} {{$badge}}</h5>
                                                         <h6 style="color: {{$color}}">{{$level->short_description}}</h6>
                                                     </a>
                                                 @endforeach

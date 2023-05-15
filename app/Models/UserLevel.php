@@ -33,4 +33,5 @@ class UserLevel extends Model
 
     }
 
+
 }
