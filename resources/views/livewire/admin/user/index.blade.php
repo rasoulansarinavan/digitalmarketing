@@ -158,26 +158,57 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">{{$user->name}}_KYC</h5>
+                    <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">KYC</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
-                    <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+                <form wire:submit.prevent="changeLevel(Object.fromEntries(new FormData($event.target)))">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                        <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+
+                            <img src="{{@$dataUser['file']['file']}}" alt="Le Meilleur Admin" class="w-100">
+
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Name : </span>{{@$dataUser['name']}}</li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Email : </span>{{@$dataUser['code_melli']}}</li>
+                                <li class="list-group-item d-flex justify-content-between">
+                                    <span>Phone : </span>{{@$dataUser['birth_date']}}</li>
+                                {{--<li class="list-group-item"><span>Location: </span>London</li>--}}
+                            </ul>
 
 
-                        <span><img src="{{@$dataUser['file']['file']}}" alt=""></span>
-                        <span>{{@$dataUser['name']}}</span>
-                        <span>mobile:{{@$dataUser['mobile']}}</span>
+                           <div class="d-flex justify-content-start mb-2">
+                               <div class="form-check form-check-inline">
+                                   <input class="form-check-input " type="radio" id="accept" value="accept" style="color: #52ff00;"
+                                          name="status">
+                                   <label class="form-check-label btn btn-success" for="accept">Accept</label>
+                               </div>
+                               <div class="form-check form-check-inline">
+                                   <input class="form-check-input" type="radio" id="reject" value="reject"
+                                          name="status">
+                                   <label class="form-check-label btn btn-danger" for="reject">Reject</label>
+                               </div>
+
+                           </div>
+
+                            <div class="form-group">
+                                <label for="comment">Comment</label>
+                                <textarea name="" class="w-100" id="comment" cols="30" rows="6"
+                                          style="background: transparent;color: #fff;padding: 10px"></textarea>
+                            </div>
+
+                        </div>
+                        <div class="slimScrollBar"
+                             style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
+                        <div class="slimScrollRail"
+                             style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
                     </div>
-                    <div class="slimScrollBar"
-                         style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
-                    <div class="slimScrollRail"
-                         style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

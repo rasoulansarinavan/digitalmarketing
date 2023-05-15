@@ -14,17 +14,23 @@ class Index extends Component
 {
 
     public $dataUser;
+    public $currentLevel = 0;
 
-    public function showDataModal($userId,$levelId)
+    public function showDataModal($userId, $levelId)
     {
 
         $data = Kyc::query()->where([
-            'user_id'=>$userId,
-            'user_level_id'=>$levelId,
+            'user_id' => $userId,
+            'user_level_id' => $levelId,
         ])->pluck('data')->first();
-        $this->dataUser = unserialize($data);/*
+        $this->dataUser = unserialize($data);
 
-dd($this->dataUser);*/
+        $this->currentLevel = $levelId;
+    }
+
+    public function chaneLevel()
+    {
+
     }
 
     public function render()
