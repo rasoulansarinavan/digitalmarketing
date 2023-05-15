@@ -110,8 +110,15 @@
                                         <td>
                                             @forelse($kycies as $kyc)
 
+                                                @php
+
+                                                    $class='';
+                                                    if($user->user_level_id==$kyc->id){
+                                                        $class='success';
+                                                    }
+                                                @endphp
                                                 <span wire:click="showDataModal({{$user->id}},{{$loop->index+1}})"
-                                                      class="btn btn-primary badge bg-primary"
+                                                      class="btn btn-{{$class}}badge bg-primary"
                                                       data-bs-toggle="modal"
                                                       data-bs-target="#exampleModalCenteredScrollable">
                                                     KYC-{{$loop->index+1}}
@@ -186,7 +193,7 @@
                                            wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input " type="radio" id="accept"  value="2"
+                                    <input class="form-check-input " type="radio" id="accept" value="2"
                                            style="color: #52ff00;"
                                            name="status">
                                     <label class="form-check-label btn btn-success" for="accept"
@@ -194,7 +201,7 @@
                                 </div>
 
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input"  type="radio" id="reject" value="3"
+                                    <input class="form-check-input" type="radio" id="reject" value="3"
                                            name="status">
                                     <label class="form-check-label btn btn-danger" for="reject"
                                            wire:click="$set('showCommentFiled', '')">Reject</label>

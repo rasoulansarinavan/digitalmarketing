@@ -52,6 +52,15 @@ class Index extends Component
             'user_id' => $this->userId,
             'user_level_id' => $this->currentLevel,
         ])->update(['status_id' => $formData['status']]);
+       /* $user = User::query()->where([
+            'id' => $this->userId,
+        ]);
+
+        if ($formData['status'] == 2) {
+            $user->update(['user_level_id' => $this->currentLevel]);
+        } else {
+            $user->update(['user_level_id' => $this->currentLevel]);
+        }*/
 
         $this->redirect('/admin/users');
 

@@ -64,4 +64,10 @@ class User extends Authenticatable
         }
 
     }
+
+    public function kycLevel()
+    {
+        return $this->belongsTo(Kyc::class, 'user_id');
+
+    }
 }
