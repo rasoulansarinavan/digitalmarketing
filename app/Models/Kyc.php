@@ -34,7 +34,7 @@ class Kyc extends Model
 
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images//cards/'. $user_id .'/' . $image_name;
+            $path = '/images/cards/'. $user_id .'/' . $image_name;
             Image::make($file)->save(public_path('images/cards/'.$user_id .'/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(1, $path);
@@ -79,8 +79,8 @@ class Kyc extends Model
             }
             $extension = $file->extension();
             $image_name = 'image_selfie_' . $user->name . '_' . $user->mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/' . $user->id . '/selfie/' . $image_name;
-            Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
+            $path = '/images/selfie/' . $user->id .'/' . $image_name;
+            Image::make($file)->save(public_path('images/selfie/'.$user->id .'/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(3, $path);
 

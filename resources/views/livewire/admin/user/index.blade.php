@@ -18,16 +18,13 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Name
+                                        style="width: 84.1016px;">Contact
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Email
+                                        style="width: 84.1016px;">Created at
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Phone
-                                    </th>
+
                                     {{-- <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                          colspan="1" aria-label="Ratings: activate to sort column ascending"
                                          style="width: 84.1016px;">Permission
@@ -40,78 +37,45 @@
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
                                         style="width: 84.1016px;">KYC
                                     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
+                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
+                                        style="width: 84.1016px;">Blocked
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr role="row" class="odd">
-                                        <td>{{ $loop->index+1 }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->mobile}}</td>
-                                        {{-- <td>
-                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                 <!-- Field wrapper start -->
-                                                 <div class="field-wrapper">
-                                                     <select class="select-single js-states select2-hidden-accessible"
-                                                             title="Select Product Category" data-live-search="true"
-                                                             data-select2-id="select2-data-9-l6lp" tabindex="-1"
-                                                             aria-hidden="true"
-                                                             wire:change="permission"
-                                                             class="form-select @error('permission') error-input-border @enderror"
-                                                             name="permission" id="permission">
-                                                         @foreach($permissions as $permission)
-                                                             <option
-                                                                 @if(isset($permission->name))
-                                                                     selected
-                                                                 @endif
-                                                                 value="{{ $permission->name }}">{{ $permission->name }}</option>
-                                                         @endforeach
-                                                     </select>
-                                                     <div class="field-placeholder">Permissions <span
-                                                             class="text-danger">*</span></div>
-                                                     @foreach($errors->get('permission') as $message)
-                                                         <span wire:loading.remove
-                                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                     @endforeach
-                                                 </div>
-                                                 <!-- Field wrapper end -->
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                 <!-- Field wrapper start -->
-                                                 <div class="field-wrapper">
-                                                     <select class="select-single js-states select2-hidden-accessible"
-                                                             title="Select Product Category" data-live-search="true"
-                                                             data-select2-id="select2-data-9-l6lp" tabindex="-1"
-                                                             aria-hidden="true"
-                                                             wire:change="role"
-                                                             class="form-select @error('role') error-input-border @enderror"
-                                                             name="role" id="role">
-                                                         @foreach($roles as $role)
-                                                             <option
-                                                                 @if(isset($role->name))
-                                                                     selected
-                                                                 @endif
-                                                                 value="{{ $role->name }}">{{ $role->name }}</option>
-                                                         @endforeach
-                                                     </select>
-                                                     <div class="field-placeholder">Roles <span
-                                                             class="text-danger">*</span></div>
-                                                     @foreach($errors->get('role') as $message)
-                                                         <span wire:loading.remove
-                                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                     @endforeach
-                                                 </div>
-                                                 <!-- Field wrapper end -->
-                                             </div>
-                                         </td>--}}
-                                        <td>
-                                            @forelse($kycies as $kyc)
+                                        <td class="sorting_1">
+                                            <div class="media-box d-flex align-items-center ">
+                                                <img src="{{$user->picture}}" width="50" class="media-avatar"
+                                                     alt="Product">
+                                                <div class="media-box-body ms-2">
+                                                    <a href="#" class="text-truncate">{{ $user->name }}</a>
+                                                    <p>ID: #{{$user->id}}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        {{-- <td>{{ $loop->index+1 }}</td>--}}
 
+                                        <td>{{$user->email}}<br>{{$user->mobile}}</td>
+                                        <td>{{$user->created_at}}<br>({{$user->created_at->diffForHumans()}})</td>
+                                        <td>
+                                            @forelse($user->kycies as $kyc)
+
+                                                @php
+
+                                                    $class='';
+                                                    if($kyc->status_id==1){
+                                                        $class='primary';
+                                                    }elseif ($kyc->status_id=2){
+                                                        $class='success';
+                                                    }elseif ($kyc->status_id=3){
+                                                        $class='danger';
+                                                    }
+                                                @endphp
                                                 <span wire:click="showDataModal({{$user->id}},{{$loop->index+1}})"
-                                                      class="btn btn-primary badge bg-primary"
+                                                      class="btn  badge bg-{{$class}}"
                                                       data-bs-toggle="modal"
                                                       data-bs-target="#exampleModalCenteredScrollable">
                                                     KYC-{{$loop->index+1}}
@@ -122,6 +86,7 @@
 
                                             @endforelse
                                         </td>
+                                        <td><input type="checkbox"></td>
 
                                     </tr>
                                 @endforeach
@@ -161,72 +126,202 @@
                     <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">KYC</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form wire:submit.prevent="changeLevel(Object.fromEntries(new FormData($event.target)))">
-                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 95%;">
-                        <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+                @if($currentLevel==1)
+                    <form wire:submit.prevent="changeLevel(Object.fromEntries(new FormData($event.target)))">
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                            <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
 
-                            <img src="{{@$dataUser['file']['file']}}" alt="Le Meilleur Admin" class="w-100">
+                                <img src="{{@$dataUser['file']['file']}}" alt="Le Meilleur Admin" class="w-100">
 
-                            <ul class="list-group mt-2">
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span>Name : </span>{{@$dataUser['name']}}</li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span>Email : </span>{{@$dataUser['code_melli']}}</li>
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span>Phone : </span>{{@$dataUser['birth_date']}}</li>
-                                {{--<li class="list-group-item"><span>Location: </span>London</li>--}}
-                            </ul>
+                                <ul class="list-group mt-2">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Name : </span>{{@$dataUser['name']}}</li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Email : </span>{{@$dataUser['code_melli']}}</li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Phone : </span>{{@$dataUser['birth_date']}}</li>
+                                    {{--<li class="list-group-item"><span>Location: </span>London</li>--}}
+                                </ul>
 
 
-                            <div class="d-flex justify-content-start mb-2">
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" checked id="pending" value="1"
-                                           name="status">
-                                    <label class="form-check-label btn btn-primary" for="pending"
-                                           wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
+                                <div class="d-flex justify-content-start mb-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" checked id="pending" value="1"
+                                               name="status">
+                                        <label class="form-check-label btn btn-primary" for="pending"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="accept" value="2"
+                                               style="color: #52ff00;"
+                                               name="status">
+                                        <label class="form-check-label btn btn-success" for="accept"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Accept</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="reject" value="3"
+                                               name="status">
+                                        <label class="form-check-label btn btn-danger" for="reject"
+                                               wire:click="$set('showCommentFiled', '')">Reject</label>
+                                    </div>
+                                    @foreach ($errors->get('status') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input " type="radio" id="accept"  value="2"
-                                           style="color: #52ff00;"
-                                           name="status">
-                                    <label class="form-check-label btn btn-success" for="accept"
-                                           wire:click="$set('showCommentFiled', 'hidden')">Accept</label>
-                                </div>
 
-                                <div class="form-check form-check-inline">
-                                    <input class="form-check-input"  type="radio" id="reject" value="3"
-                                           name="status">
-                                    <label class="form-check-label btn btn-danger" for="reject"
-                                           wire:click="$set('showCommentFiled', '')">Reject</label>
+                                <div class="form-group"{{$showCommentFiled}}>
+                                    <label for="comment">Comment</label>
+                                    <textarea name="comment" class="w-100" id="comment" cols="30" rows="6"
+                                              style="background: transparent;color: #fff;padding: 10px"></textarea>
+                                    @foreach ($errors->get('comment') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
                                 </div>
-                                @foreach ($errors->get('status') as $message)
-                                    <span wire:loading.remove
-                                          class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
-                                @endforeach
 
                             </div>
-
-                            <div class="form-group"{{$showCommentFiled}}>
-                                <label for="comment">Comment</label>
-                                <textarea name="comment" class="w-100" id="comment" cols="30" rows="6"
-                                          style="background: transparent;color: #fff;padding: 10px"></textarea>
-                                @foreach ($errors->get('comment') as $message)
-                                    <span wire:loading.remove
-                                          class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
-                                @endforeach
-                            </div>
-
+                            <div class="slimScrollBar"
+                                 style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
                         </div>
-                        <div class="slimScrollBar"
-                             style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
-                        <div class="slimScrollRail"
-                             style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                @elseif($currentLevel==2)
+                    <form wire:submit.prevent="changeLevel(Object.fromEntries(new FormData($event.target)))">
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                            <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+                                <ul class="list-group mt-2">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>Bank card : </span>{{@$dataUser['bank_card']}}</li>
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>IBAN : </span>{{@$dataUser['sheba']}}</li>
+
+                                    {{--<li class="list-group-item"><span>Location: </span>London</li>--}}
+                                </ul>
+
+
+                                <div class="d-flex justify-content-start mb-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" checked id="pending" value="1"
+                                               name="status">
+                                        <label class="form-check-label btn btn-primary" for="pending"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="accept" value="2"
+                                               style="color: #52ff00;"
+                                               name="status">
+                                        <label class="form-check-label btn btn-success" for="accept"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Accept</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="reject" value="3"
+                                               name="status">
+                                        <label class="form-check-label btn btn-danger" for="reject"
+                                               wire:click="$set('showCommentFiled', '')">Reject</label>
+                                    </div>
+                                    @foreach ($errors->get('status') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+
+                                </div>
+
+                                <div class="form-group"{{$showCommentFiled}}>
+                                    <label for="comment">Comment</label>
+                                    <textarea name="comment" class="w-100" id="comment" cols="30" rows="6"
+                                              style="background: transparent;color: #fff;padding: 10px"></textarea>
+                                    @foreach ($errors->get('comment') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+                                </div>
+
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                @elseif($currentLevel==3)
+                    <form wire:submit.prevent="changeLevel(Object.fromEntries(new FormData($event.target)))">
+                        <div class="slimScrollDiv"
+                             style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                            <div class="modal-body" style="overflow: hidden; width: auto; height: 95%;">
+                                <img src="{{@$dataUser['file']['file']}}" alt="Le Meilleur Admin" class="w-100">
+
+                                <ul class="list-group mt-2">
+                                    <li class="list-group-item d-flex justify-content-between">
+                                        <span>ID card serial : </span>{{@$dataUser['serial']}}</li>
+
+                                </ul>
+
+
+                                <div class="d-flex justify-content-start mb-2">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" checked id="pending" value="1"
+                                               name="status">
+                                        <label class="form-check-label btn btn-primary" for="pending"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input " type="radio" id="accept" value="2"
+                                               style="color: #52ff00;"
+                                               name="status">
+                                        <label class="form-check-label btn btn-success" for="accept"
+                                               wire:click="$set('showCommentFiled', 'hidden')">Accept</label>
+                                    </div>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="reject" value="3"
+                                               name="status">
+                                        <label class="form-check-label btn btn-danger" for="reject"
+                                               wire:click="$set('showCommentFiled', '')">Reject</label>
+                                    </div>
+                                    @foreach ($errors->get('status') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+
+                                </div>
+
+                                <div class="form-group"{{$showCommentFiled}}>
+                                    <label for="comment">Comment</label>
+                                    <textarea name="comment" class="w-100" id="comment" cols="30" rows="6"
+                                              style="background: transparent;color: #fff;padding: 10px"></textarea>
+                                    @foreach ($errors->get('comment') as $message)
+                                        <span wire:loading.remove
+                                              class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                    @endforeach
+                                </div>
+
+                            </div>
+                            <div class="slimScrollBar"
+                                 style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px; height: 353.552px;"></div>
+                            <div class="slimScrollRail"
+                                 style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

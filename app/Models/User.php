@@ -64,4 +64,10 @@ class User extends Authenticatable
         }
 
     }
+
+    public function kycies()
+    {
+        return $this->hasMany(Kyc::class, 'user_id');
+
+    }
 }
