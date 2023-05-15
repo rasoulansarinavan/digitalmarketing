@@ -9,17 +9,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use Livewire\WithFileUploads;
 
 class Service extends Model
 {
     use HasFactory;
+    use WithFileUploads;
 
     protected $guarded = [];
 
-    public function submitGeneralInformation($formData, $file, $service_id)
+    public function submitInfo($formData, $service_id, $file)
     {
-
-        DB::transaction(function () use ($file, $formData, $service_id) {
+        DB::transaction(function () use ($file, $service_id, $formData) {
 
             $user_id = Auth::user()->id;
             $path = public_path() . '/images/services/' . $user_id;
@@ -32,7 +33,7 @@ class Service extends Model
             $path = '/images/' . $user_id . '/services/' . $image_name;
             Image::make($file)->save(public_path('images/services/' . $user_id . '/' . $image_name), 40);
 
-            $file_id = $this->insertImageToFileTable($path);
+            $file_id = $this->insertImageToFileTable1($path);
             $formData['file'] = $file_id->toArray();
 
             Service::query()->updateOrCreate(
@@ -50,7 +51,7 @@ class Service extends Model
 
             ServiceSeoItems::query()->updateOrCreate(
                 [
-                    'id' => $service_id
+                    'id' => 1
                 ],
                 [
                     'meta_name' => $formData['meta_name'],
@@ -61,7 +62,7 @@ class Service extends Model
         });
     }
 
-    public function insertImageToFileTable($path)
+    public function insertImageToFileTable1($path)
     {
         return \App\Models\File::query()->updateOrCreate(
             [
@@ -72,6 +73,5 @@ class Service extends Model
                 'file' => $path
             ]
         );
-
     }
 }

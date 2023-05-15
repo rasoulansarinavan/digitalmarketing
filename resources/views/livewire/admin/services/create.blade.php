@@ -1,21 +1,15 @@
 <div class="content-wrapper-scroll">
     <div class="content-wrapper">
-
         <div class="row gutters">
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Add New Service</div>
                     </div>
                     <div class="card-body">
-
                         <div id="example-form">
-
                             <h3>General Information</h3>
-                            <section>
-                                <form
-                                    wire:submit.prevent="submitGeneralInformation(Object.fromEntries(new FormData($event.target)))">
+                                <form wire:submit.prevent="submitInfo(Object.fromEntries(new FormData($event.target)))">
                                     <div class="row gutters">
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
@@ -102,8 +96,6 @@
                                             </div>
                                         </div>
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                            <!-- Field wrapper start -->
                                             <div class="field-wrapper">
                                                 <div class="input-group">
 
@@ -184,69 +176,64 @@
                                         </div>
                                     </div>
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-4" dir="rtl">
-                                        <input class="btn btn-primary" type="submit" value="Submit" >
+                                        <input class="btn btn-primary" type="submit" value="Submit">
                                     </div>
                                 </form>
-                            </section>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
-
     </div>
+
+
+    @push('script')
+
+        <!-- Steps wizard JS -->
+        {{--        <script src="/backend/dark/vendor/wizard/jquery.steps.min.js"></script>--}}
+        {{--        <script src="/backend/dark/vendor/wizard/jquery.steps.custom.js"></script>--}}
+        <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
+        <script>
+            ClassicEditor
+                .create(document.querySelector('#editor'))
+                .catch(error => {
+                    console.error(error);
+                });
+        </script>
+        <!-- Summernote JS -->
+        <script src="/backend/dark/vendor/summernote/summernote-bs4.js"></script>
+        <!-- Bootstrap Select JS -->
+        <script src="/backend/dark/vendor/bs-select/bs-select.min.js"></script>
+        <script src="/backend/dark/vendor/bs-select/bs-select-custom.js"></script>
+
+        <!-- Dropzone JS -->
+        <script src="/backend/dark/vendor/dropzone/dropzone.min.js"></script>
+
+        <!-- Input Tags JS -->
+        <script src="/backend/dark/vendor/input-tags/tagsinput.min.js"></script>
+        <script src="/backend/dark/vendor/input-tags/typeahead.js"></script>
+        <script src="/backend/dark/vendor/input-tags/tagsinput-custom.js"></script>
+
+        <!-- Main Js Required -->
+        <script src="/backend/dark/js/main.js"></script>
+
+        <script>
+
+            // Summernote
+            $(document).ready(function () {
+                $('.summernote').summernote({
+                    height: 120,
+                    tabsize: 2,
+                    focus: true,
+                    toolbar: [
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['para', ['ul', 'ol']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']],
+                    ]
+                });
+            });
+
+        </script>
+    @endpush
 </div>
-
-@push('script')
-
-    <!-- Steps wizard JS -->
-    {{--        <script src="/backend/dark/vendor/wizard/jquery.steps.min.js"></script>--}}
-    {{--        <script src="/backend/dark/vendor/wizard/jquery.steps.custom.js"></script>--}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/37.0.1/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#editor'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-    <!-- Summernote JS -->
-    <script src="/backend/dark/vendor/summernote/summernote-bs4.js"></script>
-
-    <!-- Bootstrap Select JS -->
-    <script src="/backend/dark/vendor/bs-select/bs-select.min.js"></script>
-    <script src="/backend/dark/vendor/bs-select/bs-select-custom.js"></script>
-
-    <!-- Dropzone JS -->
-    <script src="/backend/dark/vendor/dropzone/dropzone.min.js"></script>
-
-    <!-- Input Tags JS -->
-    <script src="/backend/dark/vendor/input-tags/tagsinput.min.js"></script>
-    <script src="/backend/dark/vendor/input-tags/typeahead.js"></script>
-    <script src="/backend/dark/vendor/input-tags/tagsinput-custom.js"></script>
-
-    <!-- Main Js Required -->
-    <script src="/backend/dark/js/main.js"></script>
-
-    <script>
-
-        // Summernote
-        $(document).ready(function () {
-            $('.summernote').summernote({
-                height: 120,
-                tabsize: 2,
-                focus: true,
-                toolbar: [
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['para', ['ul', 'ol']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']],
-                ]
-            });
-        });
-
-    </script>
-@endpush
-

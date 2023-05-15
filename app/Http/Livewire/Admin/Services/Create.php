@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin\Services;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Support\Facades\Validator;
+use JetBrains\PhpStorm\NoReturn;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -12,11 +13,10 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $categories = [], $file, $title, $discount, $price, $category_id, $description, $long_description,$meta_name,$meta_keywords,$meta_description, $service_id;
+    public $formData = [], $categories = [], $file, $title, $discount, $price, $category_id, $description, $long_description, $meta_name, $meta_keywords, $meta_description, $service_id;
 
-    public function submitGeneralInformation($formData, Service $services)
+    public function submitInfo($formData, Service $services)
     {
-
         $formData['file'] = $this->file;
         if ($this->service_id != null) {
             $service_id = $this->service_id;
@@ -51,7 +51,7 @@ class Create extends Component
 
         $validator->validate();
         $this->resetValidation();
-        $services->submitGeneralInformation($formData, $this->file, $service_id);
+        $services->submitInfo($formData, $service_id, $this->file);
     }
 
     public function mount()
