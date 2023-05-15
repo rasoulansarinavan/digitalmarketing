@@ -37,6 +37,10 @@
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
                                         style="width: 84.1016px;">KYC
                                     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
+                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
+                                        style="width: 84.1016px;">Blocked
+                                    </th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,64 +60,7 @@
                                         <td>{{$user->email}}<br>{{$user->mobile}}</td>
                                         <td>{{$user->created_at}}<br>({{$user->created_at->diffForHumans()}})</td>
 
-                                        {{-- <td>
-                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                 <!-- Field wrapper start -->
-                                                 <div class="field-wrapper">
-                                                     <select class="select-single js-states select2-hidden-accessible"
-                                                             title="Select Product Category" data-live-search="true"
-                                                             data-select2-id="select2-data-9-l6lp" tabindex="-1"
-                                                             aria-hidden="true"
-                                                             wire:change="permission"
-                                                             class="form-select @error('permission') error-input-border @enderror"
-                                                             name="permission" id="permission">
-                                                         @foreach($permissions as $permission)
-                                                             <option
-                                                                 @if(isset($permission->name))
-                                                                     selected
-                                                                 @endif
-                                                                 value="{{ $permission->name }}">{{ $permission->name }}</option>
-                                                         @endforeach
-                                                     </select>
-                                                     <div class="field-placeholder">Permissions <span
-                                                             class="text-danger">*</span></div>
-                                                     @foreach($errors->get('permission') as $message)
-                                                         <span wire:loading.remove
-                                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                     @endforeach
-                                                 </div>
-                                                 <!-- Field wrapper end -->
-                                             </div>
-                                         </td>
-                                         <td>
-                                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                                 <!-- Field wrapper start -->
-                                                 <div class="field-wrapper">
-                                                     <select class="select-single js-states select2-hidden-accessible"
-                                                             title="Select Product Category" data-live-search="true"
-                                                             data-select2-id="select2-data-9-l6lp" tabindex="-1"
-                                                             aria-hidden="true"
-                                                             wire:change="role"
-                                                             class="form-select @error('role') error-input-border @enderror"
-                                                             name="role" id="role">
-                                                         @foreach($roles as $role)
-                                                             <option
-                                                                 @if(isset($role->name))
-                                                                     selected
-                                                                 @endif
-                                                                 value="{{ $role->name }}">{{ $role->name }}</option>
-                                                         @endforeach
-                                                     </select>
-                                                     <div class="field-placeholder">Roles <span
-                                                             class="text-danger">*</span></div>
-                                                     @foreach($errors->get('role') as $message)
-                                                         <span wire:loading.remove
-                                                               class="text-danger w-100 d-block mt-2">{{$message}}</span>
-                                                     @endforeach
-                                                 </div>
-                                                 <!-- Field wrapper end -->
-                                             </div>
-                                         </td>--}}
+                                  
                                         <td>
                                             @forelse($user->kycies as $kyc)
 
@@ -140,6 +87,7 @@
 
                                             @endforelse
                                         </td>
+                                        <td><input type="checkbox"></td>
 
                                     </tr>
                                 @endforeach
