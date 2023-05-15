@@ -178,24 +178,42 @@
                             </ul>
 
 
-                           <div class="d-flex justify-content-start mb-2">
-                               <div class="form-check form-check-inline">
-                                   <input class="form-check-input " type="radio" id="accept" value="accept" style="color: #52ff00;"
-                                          name="status">
-                                   <label class="form-check-label btn btn-success" for="accept">Accept</label>
-                               </div>
-                               <div class="form-check form-check-inline">
-                                   <input class="form-check-input" type="radio" id="reject" value="reject"
-                                          name="status">
-                                   <label class="form-check-label btn btn-danger" for="reject">Reject</label>
-                               </div>
+                            <div class="d-flex justify-content-start mb-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" checked id="pending" value="1"
+                                           name="status">
+                                    <label class="form-check-label btn btn-primary" for="pending"
+                                           wire:click="$set('showCommentFiled', 'hidden')">Pending</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input " type="radio" id="accept"  value="2"
+                                           style="color: #52ff00;"
+                                           name="status">
+                                    <label class="form-check-label btn btn-success" for="accept"
+                                           wire:click="$set('showCommentFiled', 'hidden')">Accept</label>
+                                </div>
 
-                           </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input"  type="radio" id="reject" value="3"
+                                           name="status">
+                                    <label class="form-check-label btn btn-danger" for="reject"
+                                           wire:click="$set('showCommentFiled', '')">Reject</label>
+                                </div>
+                                @foreach ($errors->get('status') as $message)
+                                    <span wire:loading.remove
+                                          class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                @endforeach
 
-                            <div class="form-group">
+                            </div>
+
+                            <div class="form-group"{{$showCommentFiled}}>
                                 <label for="comment">Comment</label>
-                                <textarea name="" class="w-100" id="comment" cols="30" rows="6"
+                                <textarea name="comment" class="w-100" id="comment" cols="30" rows="6"
                                           style="background: transparent;color: #fff;padding: 10px"></textarea>
+                                @foreach ($errors->get('comment') as $message)
+                                    <span wire:loading.remove
+                                          class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
+                                @endforeach
                             </div>
 
                         </div>
@@ -206,11 +224,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
 </div>
 
