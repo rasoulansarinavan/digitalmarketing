@@ -18,16 +18,13 @@
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Name
+                                        style="width: 84.1016px;">Contact
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Email
+                                        style="width: 84.1016px;">Created at
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Ratings: activate to sort column ascending"
-                                        style="width: 84.1016px;">Phone
-                                    </th>
+
                                     {{-- <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                          colspan="1" aria-label="Ratings: activate to sort column ascending"
                                          style="width: 84.1016px;">Permission
@@ -45,10 +42,20 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr role="row" class="odd">
-                                        <td>{{ $loop->index+1 }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->mobile}}</td>
+                                        <td class="sorting_1">
+                                            <div class="media-box d-flex align-items-center ">
+                                                <img src="{{$user->picture}}" width="50" class="media-avatar" alt="Product">
+                                                <div class="media-box-body ms-2">
+                                                    <a href="#" class="text-truncate">{{ $user->name }}</a>
+                                                    <p>ID: #{{$user->id}}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                       {{-- <td>{{ $loop->index+1 }}</td>--}}
+
+                                        <td>{{$user->email}}<br>{{$user->mobile}}</td>
+                                        <td>{{$user->created_at}}<br>({{$user->created_at->diffForHumans()}})</td>
+
                                         {{-- <td>
                                              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                                  <!-- Field wrapper start -->
@@ -108,17 +115,21 @@
                                              </div>
                                          </td>--}}
                                         <td>
-                                            @forelse($kycies as $kyc)
+                                            @forelse($user->kycies as $kyc)
 
                                                 @php
 
                                                     $class='';
-                                                    if($user->user_level_id==$kyc->id){
+                                                    if($kyc->status_id==1){
+                                                        $class='primary';
+                                                    }elseif ($kyc->status_id=2){
                                                         $class='success';
+                                                    }elseif ($kyc->status_id=3){
+                                                        $class='danger';
                                                     }
                                                 @endphp
                                                 <span wire:click="showDataModal({{$user->id}},{{$loop->index+1}})"
-                                                      class="btn btn-{{$class}}badge bg-primary"
+                                                      class="btn  badge bg-{{$class}}"
                                                       data-bs-toggle="modal"
                                                       data-bs-target="#exampleModalCenteredScrollable">
                                                     KYC-{{$loop->index+1}}

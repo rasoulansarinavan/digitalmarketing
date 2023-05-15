@@ -19,6 +19,7 @@ class Index extends Component
     public $currentLevel = 0;
     public $showCommentFiled = 'hidden';
 
+
     public function showDataModal($userId, $levelId)
     {
 
@@ -52,15 +53,20 @@ class Index extends Component
             'user_id' => $this->userId,
             'user_level_id' => $this->currentLevel,
         ])->update(['status_id' => $formData['status']]);
-       /* $user = User::query()->where([
-            'id' => $this->userId,
-        ]);
 
         if ($formData['status'] == 2) {
-            $user->update(['user_level_id' => $this->currentLevel]);
-        } else {
-            $user->update(['user_level_id' => $this->currentLevel]);
-        }*/
+            User::query()->where([
+                'id' => $this->userId,
+            ])->update(['user_level_id' => $this->currentLevel]);
+        }
+
+        /*
+
+         if ($formData['status'] == 2) {
+             $user->
+         } else {
+             $user->update(['user_level_id' => $this->currentLevel]);
+         }*/
 
         $this->redirect('/admin/users');
 
@@ -69,16 +75,15 @@ class Index extends Component
 
     public function render()
     {
-        $kycies = UserLevel::all();
+
         $permissions = Permission::all();
         $roles = Role::all();
-        $users = User::all();
+        $users = User::with('kycies')->get();
+
         return view('livewire.admin.user.index', [
             'permissions' => $permissions,
             'roles' => $roles,
             'users' => $users,
-            'kycies' => $kycies,
-//            'dataUser' => $this->dataUser
         ])->layout('layouts.app-admin');
     }
 }

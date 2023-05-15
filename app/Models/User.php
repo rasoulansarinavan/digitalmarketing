@@ -65,9 +65,9 @@ class User extends Authenticatable
 
     }
 
-    public function kycLevel()
+    public function kycies()
     {
-        return $this->belongsTo(Kyc::class, 'user_id');
+        return $this->hasMany(Kyc::class, 'user_id');
 
     }
 }
