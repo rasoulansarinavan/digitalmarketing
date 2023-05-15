@@ -7,7 +7,6 @@ use  \Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Livewire\WithFileUploads;
@@ -35,7 +34,7 @@ class Kyc extends Model
 
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/' . $user_id . '/cards/' . $image_name;
+            $path = '/images//cards/'. $user_id .'/' . $image_name;
             Image::make($file)->save(public_path('images/cards/'.$user_id .'/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(1, $path);
