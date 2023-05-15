@@ -27,14 +27,14 @@ class Kyc extends Model
 
             $user_id = Auth::user()->id;
 
-            $folder = public_path().'/images/cards/' . $user_id;
-            if (! File::exists($folder)) {
-                File::makeDirectory($folder);
+            $path = public_path().'/images/cards/' . $user_id;
+            if (! File::exists($path)) {
+                File::makeDirectory($path);
             }
 
             $extension = $file->extension();
             $image_name = 'image_cards_' . $formData['name'] . '_' . $formData['mobile'] . '_idCard_' . Str::random(10) . time() . '.' . $extension;
-            $path = $folder .'/' . $image_name;
+            $path = '/images/cards/'. $user_id .'/' . $image_name;
             Image::make($file)->save(public_path('images/cards/'.$user_id .'/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(1, $path);
@@ -73,14 +73,14 @@ class Kyc extends Model
         DB::transaction(function () use ($file, $formData) {
 
             $user = Auth::user();
-            $folder = public_path().'/images/selfie/' . $user->id;
-            if (! File::exists($folder)) {
-                File::makeDirectory($folder);
+            $path = public_path().'/images/selfie/' . $user->id;
+            if (! File::exists($path)) {
+                File::makeDirectory($path);
             }
             $extension = $file->extension();
             $image_name = 'image_selfie_' . $user->name . '_' . $user->mobile . '_selfie_' . Str::random(10) . time() . '.' . $extension;
-            $path = $folder .'/' . $image_name;
-            Image::make($file)->save(public_path('images/selfie/' . $image_name), 40);
+            $path = '/images/selfie/' . $user->id .'/' . $image_name;
+            Image::make($file)->save(public_path('images/selfie/'.$user->id .'/' . $image_name), 40);
 
             $file_id = $this->insertImageToFileTable(3, $path);
 
