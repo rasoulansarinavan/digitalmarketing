@@ -13,21 +13,21 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $formData = [], $categories = [], $file, $title, $discount, $price, $category_id, $description, $long_description, $meta_name, $meta_keywords, $meta_description, $service_id;
+    public $formData = [], $categories = [], $file, $title, $discount, $category_id, $description, $long_description, $meta_name, $meta_keywords, $meta_description, $service_id;
 
     public function submitInfo($formData, Service $services)
     {
+
         $formData['file'] = $this->file;
         if ($this->service_id != null) {
             $service_id = $this->service_id;
             $validator = Validator::make($formData, [
-                'file' => 'required|image|mimes:jpg,jpeg,png|max:1024',
+                'file' => 'required|image|mimes:jpg,jpeg,png|max:100024',
                 'title' => 'required | string | max: 30',
                 'discount' => 'required | integer ',
-                'price' => 'required | integer ',
                 'category_id' => 'required | integer ',
                 'description' => 'required | string',
-                'long_description' => '',
+                'long_description' => 'required | string',
                 'meta_name' => 'required | string',
                 'meta_keywords' => 'required | string',
                 'meta_description' => 'required | string',
@@ -38,11 +38,10 @@ class Create extends Component
             $validator = Validator::make($formData, [
                 'file' => 'required|image|mimes:jpg,jpeg,png|max:10024',
                 'title' => 'required | string | max: 30',
-                'discount' => 'required | integer ',
-                'price' => 'required | integer ',
+                'discount' => ' integer ',
                 'category_id' => 'required | integer ',
                 'description' => 'required | string',
-                'long_description' => '',
+                'long_description' => 'required | string',
                 'meta_name' => 'required | string',
                 'meta_keywords' => 'required | string',
                 'meta_description' => 'required | string',

@@ -20,6 +20,7 @@ class Service extends Model
 
     public function submitInfo($formData, $service_id, $file)
     {
+
         DB::transaction(function () use ($file, $service_id, $formData) {
 
             $user_id = Auth::user()->id;
@@ -30,20 +31,20 @@ class Service extends Model
 
             $extension = $file->extension();
             $image_name = 'image_services_' . $formData['title'] . '_' . '_services_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/' . $user_id . '/services/' . $image_name;
+            $path = '/images/services/' . $user_id . '/' . $image_name;
             Image::make($file)->save(public_path('images/services/' . $user_id . '/' . $image_name), 40);
 
-            $file_id = $this->insertImageToFileTable1($path);
+            $file_id = $this->insertImageToFileTable1($path, $service_id);
             $formData['file'] = $file_id->toArray();
 
-            Service::query()->updateOrCreate(
+            $service = Service::query()->updateOrCreate(
                 [
                     'id' => $service_id
                 ],
                 [
                     'title' => $formData['title'],
                     'description' => $formData['description'],
-                    'long_description' => 4,
+                    'long_description' => $formData['long_description'],
                     'discount' => $formData['discount']
                 ]
             );
@@ -51,7 +52,7 @@ class Service extends Model
 
             ServiceSeoItems::query()->updateOrCreate(
                 [
-                    'id' => 1
+                    'id' => $service_id
                 ],
                 [
                     'meta_name' => $formData['meta_name'],
@@ -62,16 +63,22 @@ class Service extends Model
         });
     }
 
-    public function insertImageToFileTable1($path)
+    public function insertImageToFileTable1($path, $service_id)
     {
         return \App\Models\File::query()->updateOrCreate(
             [
-                'user_id' => Auth::user()->id,
+                'file' => $path,
+
                 'type' => 'service',
             ],
             [
-                'file' => $path
+                'user_id' => Auth::user()->id
             ]
         );
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(\App\Models\File::class, 'id');
     }
 }
