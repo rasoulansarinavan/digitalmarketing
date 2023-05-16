@@ -62,8 +62,9 @@
     <!-- Input Tags css -->
     <link rel="stylesheet" href="/backend/dark/vendor/input-tags/tagsinput.css"/>
 
-    <!-- Plugins Customization RTL -->
-    <link rel="stylesheet" href="/backend/dark/css/plugins-rtl.css">
+
+
+    <link rel="stylesheet" href="/backend/dark/vendor/notify/notify-flat.css">
 
     @livewireStyles
 
@@ -96,18 +97,10 @@
 </div>
 <!-- Page wrapper end -->
 
-<!-- *************
-    ************ Required JavaScript Files *************
-************* -->
-<!-- Required jQuery first, then Bootstrap Bundle JS -->
-<script src="/backend/dark/js/jquery.min.js"></script>
-<script src="/backend/dark/js/bootstrap.bundle.min.js"></script>
-<script src="/backend/dark/js/modernizr.js"></script>
-<script src="/backend/dark/js/moment.js"></script>
 
-<!-- *************
-    ************ Vendor Js Files *************
-************* -->
+<script src="/backend/dark/js/jquery.min.js"></script>
+
+<script src="/backend/dark/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Megamenu JS -->
 <script src="/backend/dark/vendor/megamenu/js/megamenu.js"></script>
@@ -135,84 +128,23 @@
 <script src="/backend/dark/vendor/apex/custom/home/customersGraph.js"></script>
 <script src="/backend/dark/vendor/apex/custom/home/sparkline.js"></script>
 
-<!-- Rating JS -->
-<script src="/backend/dark/vendor/rating/raty.js"></script>
-<script src="/backend/dark/vendor/rating/raty-custom.js"></script>
 
 
-<!-- Circleful Charts -->
-<script src="/backend/dark/vendor/circliful/circliful.min.js"></script>
-<script src="/backend/dark/vendor/circliful/circliful.custom.js"></script>
-<!-- Main Js Required -->
+
+<script src="/backend/dark/js/modernizr.js"></script>
+<script src="/backend/dark/js/moment.js"></script>
+
+
+
+<!-- Notify js -->
+<script src="/backend/dark/js/jquery.easing.1.3.js"></script>
+<script src="/backend/dark/vendor/notify/notify.js"></script>
+<script src="/backend/dark/vendor/notify/notify-custom.js"></script>
+
+
 <script src="/backend/dark/js/main.js"></script>
 
 
-<script>
-    window.addEventListener('swal:confirm', event => {
-        swal({
-            title: event.detail.title,
-            text: event.detail.text,
-            icon: event.detail.type,
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                if (willDelete) {
-                    window.livewire.emit('delete', event.detail.id);
-                }
-            });
-    });
-</script>
-<script src="/backend/js/toastr.min.js"></script>
-<script>
-    $(document).ready(function () {
-        toastr.options = {
-            "progressBar": false,
-            "positionClass": "toast-bottom-{{app()->getLocale()=='en' ?'right':'left'}}",
-            "timeOut": 2000,
-
-        }
-    })
-    document.addEventListener('success', event => {
-
-        toastr.success(event.detail.message)
-        setTimeout(function () {
-            //location.reload();
-        }, 3000);
-        $('.modal').modal('hide');
-
-    })
-    document.addEventListener('warning', event => {
-        toastr.warning(event.detail.message)
-        setTimeout(function () {
-            //location.reload();
-        }, 3000);
-
-
-    })
-    document.addEventListener('error', event => {
-        toastr.error(event.detail.message)
-        setTimeout(function () {
-            // location.reload();
-        }, 3000);
-
-    })
-
-    window.addEventListener('toastr:info', event => {
-        toastr.info(event.detail.message);
-    });
-
-
-    window.addEventListener('swal:warning', event => {
-
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: event.detail.text,
-            footer: ''
-        })
-    })
-</script>
 
 @stack('script')
 
