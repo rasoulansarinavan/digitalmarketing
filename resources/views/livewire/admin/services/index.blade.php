@@ -9,7 +9,7 @@
                     <div class="table-responsive">
                         <div id="copy-print-csv_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                             <div id="copy-print-csv_filter" class="dataTables_filter"><label>Search:<input type="search"
-                                                                                                           class="form-control form-control-sm selectpicker"
+                                                                                                           class="form-control form-control-sm selectpicker mb-2"
                                                                                                            placeholder=""
                                                                                                            aria-controls="copy-print-csv"></label>
                             </div>
@@ -47,8 +47,8 @@
                                     <tr role="row" class="odd">
                                         <td class="sorting_1">
                                             <div class="media-box">
-                                                <img src="{{@$service->image->file}}" class="media-avatar" alt="Product"
-                                                     width="100px">
+                                                <img src="/{{@$service->image->file}}" class="media-avatar"
+                                                     alt="Product" width="100px">
                                             </div>
                                         </td>
                                         <td>
@@ -59,11 +59,7 @@
                                         </td>
 
                                         <td>
-                                            @if(isset($service->discount))
-                                                <b>{{$service->discount}} %</b>
-                                            @else
-                                                <b>0</b>
-                                            @endif
+                                            <b>{{$service->discount}}</b>
                                         </td>
                                         <td>
                                             <div class="actions">
@@ -72,11 +68,52 @@
                                                    data-original-title="Edit">
                                                     <i class="icon-edit1 text-info"></i>
                                                 </a>
-                                                <a wire:click="deleteService({{$service->id}})" data-toggle="tooltip"
-                                                   data-placement="top" title=""
-                                                   data-original-title="Delete">
-                                                    <i class="icon-x-circle text-danger"></i>
+                                                <a
+                                                    data-toggle="tooltip"
+                                                    data-placement="top" title=""
+                                                    data-original-title="Delete"
+                                                    class="primary" data-bs-toggle="modal"
+                                                    data-bs-target="#staticBackdrop">
+                                                    <i class="icon-x-circle text-danger "></i>
                                                 </a>
+                                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                                     data-bs-keyboard="false" tabindex="-1"
+                                                     aria-labelledby="staticBackdropLabel" style="display: none;"
+                                                     aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="staticBackdropLabel">Delete
+                                                                    Service</h5>
+                                                                <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="slimScrollDiv"
+                                                                 style="position: relative; overflow: hidden; width: auto; height: 95%;">
+                                                                <div class="modal-body"
+                                                                     style="overflow: hidden; width: auto; height: 95%;">
+                                                                    Are you sure??
+                                                                </div>
+                                                                <div class="slimScrollBar"
+                                                                     style="background: rgb(36, 38, 68); width: 5px; position: absolute; top: 0px; opacity: 0.8; display: block; border-radius: 0px; z-index: 99; right: 1px;"></div>
+                                                                <div class="slimScrollRail"
+                                                                     style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(36, 38, 68); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close
+                                                                </button>
+                                                                <button wire:click="deleteService({{$service->id}})"
+                                                                        type="button"
+                                                                        class="btn btn-danger add-danger-noti"
+                                                                        data-bs-dismiss="modal">Delete
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </td>
                                     </tr>
@@ -101,6 +138,13 @@
                                             class="page-link">Next</a></li>
                                 </ul>
                             </div>
+                            {{-- //////// toaster //////--}}
+                            <div class="notify-notifications clearfix">
+                                <div id="notes" class="notify notify-notes"></div>
+                                <div class="custom-btn-group">
+                                </div>
+                            </div>
+                            {{--  ///// toaster /////--}}
                         </div>
                     </div>
                 </div>
