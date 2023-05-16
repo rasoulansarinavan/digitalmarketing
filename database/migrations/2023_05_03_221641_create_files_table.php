@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('file');
             $table->string('type')->default('image');
-            $table->foreignId('product_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignId('service_id')->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
