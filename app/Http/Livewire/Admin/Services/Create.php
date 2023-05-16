@@ -23,39 +23,40 @@ class Create extends Component
             $service_id = $this->service_id;
             $validator = Validator::make($formData, [
                 'file' => 'required|image|mimes:jpg,jpeg,png|max:100024',
-                'title' => 'required | string | max: 30',
+                'title' => 'required | string | max: 50',
                 'discount' => 'required | integer ',
                 'category_id' => 'required | integer ',
                 'description' => 'required | string',
                 'long_description' => 'required | string',
-                'meta_name' => 'required | string',
-                'meta_keywords' => 'required | string',
-                'meta_description' => 'required | string',
+//                'meta_name' => 'required | string',
+//                'meta_keywords' => 'required | string',
+//                'meta_description' => 'required | string',
             ]);
         } else {
             $service_id = 0;
             $formData['file'] = $this->file;
             $validator = Validator::make($formData, [
                 'file' => 'required|image|mimes:jpg,jpeg,png|max:10024',
-                'title' => 'required | string | max: 30',
+                'title' => 'required | string | max: 50',
                 'discount' => ' integer ',
                 'category_id' => 'required | integer ',
                 'description' => 'required | string',
                 'long_description' => 'required | string',
-                'meta_name' => 'required | string',
-                'meta_keywords' => 'required | string',
-                'meta_description' => 'required | string',
+//                'meta_name' => 'required | string',
+//                'meta_keywords' => 'required | string',
+//                'meta_description' => 'required | string',
             ]);
         }
 
         $validator->validate();
         $this->resetValidation();
         $services->submitInfo($formData, $service_id, $this->file);
+        $this->redirect('/admin/service/index');
     }
 
     public function mount()
     {
-        $this->categories = Category::query()->where('category_id', '!=', 0)->get();
+        $this->categories = Category::all();
     }
 
     public function render()
