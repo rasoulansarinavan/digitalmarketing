@@ -18,8 +18,10 @@ class DatabaseSeeder extends Seeder
             StatusesTableSeeder::class,
             UsersTableSeeder::class,
             KycsTableSeeder::class,
+            FilesTableSeeder::class,
+            ServicesTableSeeder::class
         ]);
-
-
+        $this->call(FilesTableSeeder::class);
+        $this->call(ServicesTableSeeder::class);
     }
 }
