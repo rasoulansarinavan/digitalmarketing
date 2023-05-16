@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Arr;
 use  \Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -31,11 +32,9 @@ class Service extends Model
 
             $extension = $file->extension();
             $image_name = 'image_services_' . $formData['title'] . '_' . '_services_' . Str::random(10) . time() . '.' . $extension;
-            $path = '/images/services/' . $user_id . '/' . $image_name;
+            $path = 'images/services/' . $user_id . '/' . $image_name;
             Image::make($file)->save(public_path('images/services/' . $user_id . '/' . $image_name), 40);
 
-            $file_id = $this->insertImageToFileTable1($path, $service_id);
-            $formData['file'] = $file_id->toArray();
 
             $service = Service::query()->updateOrCreate(
                 [
@@ -45,33 +44,37 @@ class Service extends Model
                     'title' => $formData['title'],
                     'description' => $formData['description'],
                     'long_description' => $formData['long_description'],
-                    'discount' => $formData['discount']
+                    'discount' => $formData['discount'],
+                    'slug' => Str::slug($formData['title'])
                 ]
             );
 
+            $file_id = $this->insertImageToFileTable1($path, $service->id);
+            $formData['file'] = $file_id->toArray();
 
-            ServiceSeoItems::query()->updateOrCreate(
-                [
-                    'id' => $service_id
-                ],
-                [
-                    'meta_name' => $formData['meta_name'],
-                    'meta_keywords' => $formData['meta_keywords'],
-                    'meta_description' => $formData['meta_description']
-                ]
-            );
+//            ServiceSeoItems::query()->updateOrCreate(
+//                [
+//                    'id' => $service_id
+//                ],
+//                [
+//                    'meta_name' => $formData['meta_name'],
+//                    'meta_keywords' => $formData['meta_keywords'],
+//                    'meta_description' => $formData['meta_description'],
+//                    'service_id'=>$service->id
+//                ]
+//            );
         });
     }
 
-    public function insertImageToFileTable1($path, $service_id)
+    public function insertImageToFileTable1($path, $id)
     {
         return \App\Models\File::query()->updateOrCreate(
             [
-                'file' => $path,
-
+                'service_id' => $id,
                 'type' => 'service',
             ],
             [
+                'file' => $path,
                 'user_id' => Auth::user()->id
             ]
         );
@@ -79,6 +82,9 @@ class Service extends Model
 
     public function image()
     {
-        return $this->belongsTo(\App\Models\File::class, 'id');
+//        return $this->belongsTo(\App\Models\File::class, 'service_id');
+        return $this->belongsTo(\App\Models\File::class, 'id', 'service_id')->where('type', '=', 'service');
     }
+
+
 }
