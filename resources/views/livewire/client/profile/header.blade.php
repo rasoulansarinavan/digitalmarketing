@@ -246,6 +246,7 @@
                                             <li>
                                                 <a href="/backend/user-profile.html">User Profile</a>
                                             </li>
+
                                         </ul>
                                     </li>
 
@@ -517,9 +518,11 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end md" aria-labelledby="userSettings">
                         <div class="header-profile-actions">
-                            <a href="/backend/user-profile.html"><i class="icon-user1"></i>Profile</a>
-                            <a href="/backend/account-settings.html"><i class="icon-settings1"></i>Settings</a>
-                            <a href="{{route('auth.client.logout')}}"><i class="icon-log-out1"></i>Logout</a>
+                            <a href="{{route('auth.client.logout')}}"><i class="icon-log-out1"></i>خروج</a>
+                           {{-- <a href="/backend/user-profile.html"><i class="icon-user1"></i>Profile</a>--}}
+                            <a href="/backend/account-settings.html"><i class="icon-settings1"></i>سفارشات من</a>
+                            <a href="{{route('profile.kyc', 1)}}"><i class="icon-user-check"></i>احراز هویت</a>
+
                         </div>
                     </div>
                 </li>
