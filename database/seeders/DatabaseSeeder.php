@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-
         $this->call([
             UserLevelsTableSeeder::class,
             CategoriesTableSeeder::class,
@@ -19,9 +18,7 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             KycsTableSeeder::class,
             FilesTableSeeder::class,
-            ServicesTableSeeder::class
+            ServicesTableSeeder::class,
         ]);
-        $this->call(FilesTableSeeder::class);
-        $this->call(ServicesTableSeeder::class);
     }
 }
