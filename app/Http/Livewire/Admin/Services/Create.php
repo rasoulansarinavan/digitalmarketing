@@ -59,6 +59,7 @@ class Create extends Component
                 'meta_description' => 'required | string',
             ]);
         } else {
+
             $service_id = 0;
             $formData['file'] = $this->file;
             $validator = Validator::make($formData, [
