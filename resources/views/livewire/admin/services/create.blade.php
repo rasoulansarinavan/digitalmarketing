@@ -14,10 +14,11 @@
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
                                         <div class="field-wrapper">
-                                            <input type="text" placeholder="Enter Service Name" name="title">
-                                            <div
-                                                class="field-placeholder   @error('title') error-input-border @enderror">
-                                                Service Name <span
+                                            <input value="{{$service_data['title']}}" name="title" id="title"
+                                                   type="text"
+                                                   class="form-control @error('title') error-input-border @enderror"
+                                                   placeholder="Enter Service Name">
+                                            <div class="field-placeholder">Service Name <span
                                                     class="text-danger">*</span></div>
                                         </div>
                                         @foreach($errors->get('title') as $message)
@@ -29,13 +30,21 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
 
-                                        <div class="field-wrapper">
+                                        <div wire:ignore class="field-wrapper">
                                             <select name="category_id" id="category_id" class="select-single js-states
                                                  @error('category_id') error-input-border @enderror"
                                                     title="Select Service Category"
                                                     data-live-search="true">
                                                 @forelse($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                                    <option
+
+                                                        {{--                                                        @if(isset($service_data['category_id']))--}}
+
+                                                        {{--                                                            selected--}}
+
+                                                        {{--                                                        @endif--}}
+
+                                                        value="{{$category->id}}">{{$category->title}}</option>
                                                 @empty
                                                 @endforelse
 
@@ -53,9 +62,10 @@
 
                                         <div class="field-wrapper">
                                             <div class="input-group">
-                                                <input type="text" class="form-control
-                                                    @error('discount') error-input-border @enderror"
-                                                       placeholder="Set Service Discount Price" name="discount">
+                                                <input value="{{$service_data['discount']}}" name="discount"
+                                                       id="discount"
+                                                       type="text"
+                                                       class="form-control @error('discount') error-input-border @enderror">
                                                 <span class="input-group-text">%</span>
                                             </div>
                                             @foreach($errors->get('discount') as $message)
@@ -71,7 +81,10 @@
 
                                         <!-- Field wrapper start -->
                                         <div class="field-wrapper">
-                                            <textarea name="description" id="" cols="30" rows="5"></textarea>
+                                            <textarea
+                                                name="description" id="description"
+                                                class="@error('description') error-input-border @enderror" cols="30"
+                                                rows="5">{{$service_data['description']}}</textarea>
                                             @foreach ($errors->get('description') as $message)
                                                 <span wire:loading.remove
                                                       class=" text-danger w-100 d-block mt-2">{{ $message}}</span>
@@ -85,8 +98,10 @@
 
                                         <!-- Field wrapper start -->
                                         <div wire:ignore class="field-wrapper">
-                                            <div  class="w-100">
-                                                <textarea wire:model.defer="long_description" name="long_description" id="editor" data-editor="@this"  ></textarea>
+                                            <div class="w-100">
+                                                <textarea wire:model.defer="long_description" name="long_description"
+                                                          id="editor"
+                                                          data-editor="@this">{{$service_data['long_description']}}</textarea>
                                             </div>
                                             @foreach ($errors->get('long_description') as $message)
                                                 <span wire:loading.remove
@@ -113,13 +128,13 @@
                                                 <button class="btn btn-outline-primary" type="button"
                                                         id="inputGroupFile02">Upload
                                                 </button>
-
+                                                <img class="w-100 p-lg-5" src="/{{$image['file']}}" >
                                             </div>
                                             <div wire:loading wire:target="file">Uploading...</div>
                                             <div class="field-placeholder">Service Image<span
                                                     class="text-danger">*</span></div>
                                             @if ($file)
-                                                <img class="w-100" src="{{ $file->temporaryUrl() }}">
+{{--                                                <img class="w-100 p-lg-5" src="{{ $file->temporaryUrl() }}">--}}
                                             @endif
                                         </div>
                                     </div>
@@ -132,7 +147,8 @@
                                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 
                                             <div class="field-wrapper">
-                                                <input name="meta_name" type="text" placeholder="Enetr Meta Name" class=" @error('file') error-input-border @enderror">
+                                                <input value="{{$seo['meta_name']}}" name="meta_name" type="text" placeholder="Enetr Meta Name"
+                                                       class=" @error('file') error-input-border @enderror">
                                                 <div class="field-placeholder">Meta Name <span
                                                         class="text-danger">*</span></div>
                                                 @foreach ($errors->get('meta_name') as $message)
@@ -146,9 +162,10 @@
 
                                             <div wire:ignore class="field-wrapper">
                                                 <div class="bootstrap-tagsinput"></div>
-                                                <input name="meta_keywords" type="text" placeholder="Enter Keywords"
-                                                       value="Books, Mobiles, Food" data-role="tagsinput"
-                                                       style="display: none;" class=" @error('meta_keywords') error-input-border @enderror">
+                                                <input value="{{$seo['meta_keywords']}}" name="meta_keywords" type="text" placeholder="Enter Keywords"
+                                                       data-role="tagsinput"
+                                                       style="display: none;"
+                                                       class=" @error('meta_keywords') error-input-border @enderror">
                                                 <div class="field-placeholder">Meta Keywords <span
                                                         class="text-danger">*</span></div>
                                                 @foreach ($errors->get('meta_keywords') as $message)
@@ -162,8 +179,10 @@
 
                                             <!-- Field wrapper start -->
                                             <div wire:ignore class="field-wrapper">
-                                                <div  class="w-100">
-                                                    <textarea wire:model.defer="meta_description" name="meta_description" id="editor1" data-editor1="@this"  ></textarea>
+                                                <div class="w-100">
+                                                    <textarea wire:model.defer="meta_description"
+                                                              name="meta_description" id="editor1"
+                                                              data-editor1="@this">{{$seo['meta_description']}}</textarea>
                                                 </div>
                                                 @foreach ($errors->get('meta_description') as $message)
                                                     <span wire:loading.remove
@@ -196,7 +215,7 @@
                 .create(document.querySelector('#editor'))
                 .then(editor => {
                     document.querySelector('#submit').data('editor');
-                    eval(editor).set('long_description',editor.getData());
+                    eval(editor).set('long_description', editor.getData());
                 })
                 .catch(error => {
                     console.error(error);
@@ -207,7 +226,7 @@
                 .create(document.querySelector('#editor1'))
                 .then(editor1 => {
                     document.querySelector('#submit').data('editor1');
-                    eval(editor1).set('meta_description',editor1.getData());
+                    eval(editor1).set('meta_description', editor1.getData());
                 })
                 .catch(error => {
                     console.error(error);

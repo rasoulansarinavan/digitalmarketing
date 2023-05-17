@@ -38,9 +38,7 @@ Route::group(['prefix' => 'admin', 'name' => 'admin.',/* 'middleware' =>'auth:ad
     Route::get('/role', \App\Http\Livewire\Admin\Role\Index::class)->name('role');
     Route::get('/category', \App\Http\Livewire\Admin\Category\Index::class)->name('category');
     Route::get('/userLevels', \App\Http\Livewire\Admin\UserLevel\Index::class)->name('userLevels');
-    Route::get('/service/create', \App\Http\Livewire\Admin\Services\Create::class)->name('service.create');
+    Route::get('/service/create/{id?}', \App\Http\Livewire\Admin\Services\Create::class)->name('service.create');
     Route::get('/service/index', \App\Http\Livewire\Admin\Services\Index::class)->name('service.index');
-
-
 });
 

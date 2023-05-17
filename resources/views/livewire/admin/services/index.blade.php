@@ -26,14 +26,10 @@
                                         colspan="1" aria-label="Ratings: activate to sort column ascending"
                                         style="width: 85.1042px;">Name service
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
-                                        colspan="1" aria-label="Category: activate to sort column ascending"
-                                        style="width: 77.3828px;">Description
-                                    </th>
 
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Status: activate to sort column ascending"
-                                        style="width: 64.4141px;">Discount
+                                        style="width: 64.4141px;">Category
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="copy-print-csv" rowspan="1"
                                         colspan="1" aria-label="Actions: activate to sort column ascending"
@@ -55,11 +51,7 @@
                                             {{$service->title}}
                                         </td>
                                         <td>
-                                            {{$service->description}}
-                                        </td>
-
-                                        <td>
-                                            <b>{{$service->discount}}</b>
+                                            <b>{{@$service->category->title}}</b>
                                         </td>
                                         <td>
                                             <div class="actions">
@@ -139,7 +131,7 @@
                                 </ul>
                             </div>
                             {{-- //////// toaster //////--}}
-                            <div class="notify-notifications clearfix">
+                            <div wire:ignore class="notify-notifications clearfix">
                                 <div id="notes" class="notify notify-notes"></div>
                                 <div class="custom-btn-group">
                                 </div>

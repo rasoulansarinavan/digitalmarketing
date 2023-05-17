@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
             CategoriesTableSeeder::class,
             StatusesTableSeeder::class,
             UsersTableSeeder::class,
+            ServicesTableSeeder::class,
             KycsTableSeeder::class,
             FilesTableSeeder::class,
-            ServicesTableSeeder::class,
         ]);
     }
 }

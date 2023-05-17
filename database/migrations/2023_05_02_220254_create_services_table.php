@@ -15,8 +15,8 @@ return new class extends Migration {
             $table->string('title')->unique();
             $table->text('description');
             $table->text('long_description')->nullable();
-            $table->text('discount')->default(0);
-            $table->text('slug')->unique()->nullable();
+            $table->integer('discount')->default(0);
+            $table->string('slug')->unique()->nullable();
             $table->timestamps();
         });
     }

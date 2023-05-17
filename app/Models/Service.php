@@ -24,18 +24,18 @@ class Service extends Model
 
         DB::transaction(function () use ($file, $service_id, $formData) {
 
-            $user_id = Auth::user()->id;
-            $path = public_path() . '/images/services/' . $user_id;
-            if (!File::exists($path)) {
-                File::makeDirectory($path);
+
+            if ($file) {
+                $user_id = Auth::user()->id;
+                $path = public_path() . '/images/services/' . $user_id;
+                if (!File::exists($path)) {
+                    File::makeDirectory($path);
+                }
+                $extension = $file->extension();
+                $image_name = 'image_services_' . $formData['title'] . '_' . '_services_' . Str::random(10) . time() . '.' . $extension;
+                $path = 'images/services/' . $user_id . '/' . $image_name;
+                Image::make($file)->save(public_path('images/services/' . $user_id . '/' . $image_name), 40);
             }
-
-            $extension = $file->extension();
-            $image_name = 'image_services_' . $formData['title'] . '_' . '_services_' . Str::random(10) . time() . '.' . $extension;
-            $path = 'images/services/' . $user_id . '/' . $image_name;
-            Image::make($file)->save(public_path('images/services/' . $user_id . '/' . $image_name), 40);
-
-
             $service = Service::query()->updateOrCreate(
                 [
                     'id' => $service_id
@@ -48,21 +48,21 @@ class Service extends Model
                     'slug' => Str::slug($formData['title'])
                 ]
             );
-
-            $file_id = $this->insertImageToFileTable1($path, $service->id);
-            $formData['file'] = $file_id->toArray();
-
-//            ServiceSeoItems::query()->updateOrCreate(
-//                [
-//                    'id' => $service_id
-//                ],
-//                [
-//                    'meta_name' => $formData['meta_name'],
-//                    'meta_keywords' => $formData['meta_keywords'],
-//                    'meta_description' => $formData['meta_description'],
-//                    'service_id'=>$service->id
-//                ]
-//            );
+            if ($file) {
+                $file_id = $this->insertImageToFileTable1($path, $service->id);
+                $formData['file'] = $file_id->toArray();
+            }
+            ServiceSeoItems::query()->updateOrCreate(
+                [
+                    'id' => $service_id
+                ],
+                [
+                    'meta_name' => $formData['meta_name'],
+                    'meta_keywords' => $formData['meta_keywords'],
+                    'meta_description' => $formData['meta_description'],
+                    'service_id' => $service->id
+                ]
+            );
         });
     }
 
@@ -82,9 +82,12 @@ class Service extends Model
 
     public function image()
     {
-//        return $this->belongsTo(\App\Models\File::class, 'service_id');
         return $this->belongsTo(\App\Models\File::class, 'id', 'service_id')->where('type', '=', 'service');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
 }
